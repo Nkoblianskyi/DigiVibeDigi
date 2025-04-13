@@ -19,6 +19,7 @@ import {
     DrawerTitle,
     DrawerClose
 } from '@/components/ui/drawer';
+import { useState } from 'react';
 
 const sections = [
     { label: 'Services', id: 'services' },
@@ -32,6 +33,8 @@ export const Header = () => {
     const router = useRouter();
     const pathname = usePathname();
 
+    const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+
     const handleScrollOrRedirect = (id: string) => {
         if (pathname === '/') {
             const section = document.getElementById(id);
@@ -41,6 +44,13 @@ export const Header = () => {
             }
         } else {
             router.push(`/?scrollTo=${id}`);
+        }
+    };
+
+    // Закриваємо меню після кліку в мобільній версії
+    const handleMenuItemClick = () => {
+        if (isDrawerOpen) {
+            setIsDrawerOpen(false);
         }
     };
 
@@ -97,7 +107,7 @@ export const Header = () => {
 
                 {/* Mobile Navigation */}
                 <div className="md:hidden">
-                    <Drawer>
+                    <Drawer open={isDrawerOpen} onOpenChange={setIsDrawerOpen}>
                         <DrawerTrigger asChild>
                             <Button variant="ghost" size="icon">
                                 <Menu className="w-6 h-6" />
@@ -107,21 +117,27 @@ export const Header = () => {
                             <DrawerHeader>
                                 <DrawerTitle>Menu</DrawerTitle>
                             </DrawerHeader>
-                            <div className="flex flex-col gap-3 p-4 text-sm">
+                            <div className="flex flex-col gap-3 p-4 text-sm text-center">
                                 {sections.map((s) => (
-                                    <button key={s.id} onClick={() => handleScrollOrRedirect(s.id)}>
+                                    <button
+                                        key={s.id}
+                                        onClick={() => {
+                                            handleScrollOrRedirect(s.id);
+                                            handleMenuItemClick();
+                                        }}
+                                    >
                                         {s.label}
                                     </button>
                                 ))}
                                 <hr />
-                                <Link href="/services/ppc">PPC Services</Link>
-                                <Link href="/services/seo">SEO Services</Link>
-                                <Link href="/services/social">Social Media</Link>
-                                <Link href="/services/affiliate">Affiliate</Link>
+                                <Link href="/services/ppc" onClick={handleMenuItemClick}>PPC Services</Link>
+                                <Link href="/services/seo" onClick={handleMenuItemClick}>SEO Services</Link>
+                                <Link href="/services/social" onClick={handleMenuItemClick}>Social Media</Link>
+                                <Link href="/services/affiliate" onClick={handleMenuItemClick}>Affiliate</Link>
                                 <hr />
-                                <Link href="/blog">Blog</Link>
-                                <Link href="/about-us">About Us</Link>
-                                <Link href="/write-to-us">
+                                <Link href="/blog" onClick={handleMenuItemClick}>Blog</Link>
+                                <Link href="/about-us" onClick={handleMenuItemClick}>About Us</Link>
+                                <Link href="/write-to-us" onClick={handleMenuItemClick}>
                                     <Button className="w-full bg-gradient-to-r from-pink-500 to-purple-700 text-white">
                                         Write to Us
                                     </Button>
