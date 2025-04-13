@@ -47,7 +47,6 @@ export const Header = () => {
         }
     };
 
-    // Закриваємо меню після кліку в мобільній версії
     const handleMenuItemClick = () => {
         if (isDrawerOpen) {
             setIsDrawerOpen(false);
@@ -107,7 +106,7 @@ export const Header = () => {
 
                 {/* Mobile Navigation */}
                 <div className="md:hidden">
-                    <Drawer open={isDrawerOpen} onOpenChange={setIsDrawerOpen}>
+                    <Drawer aria-labelledby="Menu" open={isDrawerOpen} onOpenChange={setIsDrawerOpen}>
                         <DrawerTrigger asChild>
                             <Button variant="ghost" size="icon">
                                 <Menu className="w-6 h-6" />
