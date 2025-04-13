@@ -19,7 +19,7 @@ export const Footer = () => {
                 {/* Center - Company Info */}
                 <div className="flex flex-col items-center text-center">
                     <div className="flex items-center gap-2 mb-3">
-                        <Link href='/' aria-label="DigiVibeDigi">
+                        <Link href='/' aria-label="DigiVibeDigi" className="flex items-center gap-2">
                             <Image src="/logo.svg" alt="logo" width={24} height={24} />
                             <h3 className="text-2xl font-semibold">DigiVibeDigi</h3>
                         </Link>
