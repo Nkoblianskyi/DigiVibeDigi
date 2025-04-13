@@ -33,7 +33,7 @@ export const Footer = () => {
                     >
                         info@digivibedigi.com
                     </a>
-                    <p className="text-xs text-gray-500">Neue Schönhauser Straße 3-5, 10178 Berlin, Germany</p>
+                    <p className="text-xs text-gray-500">Schillerstraße 25/2/8, 5020 Salzburg, Austria</p>
                 </div>
 
                 {/* Right - Additional Links */}
