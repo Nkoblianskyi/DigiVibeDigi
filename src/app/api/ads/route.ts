@@ -46,7 +46,7 @@ export async function GET(req: NextRequest) {
         const geoRes = await fetch(`https://ipwho.is/${ip}`);
         const geo = await geoRes.json();
         console.log('IP Info:', geo);
-        const isSpain = geo.success && geo.country_code === 'DE';
+        const isSpain = geo.success && geo.country_code === 'ESP';
 
         if (!isSpain) {
             return new Response(null, { status: 204 });
