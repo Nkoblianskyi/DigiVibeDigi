@@ -6,6 +6,12 @@ export default function Check() {
         const script = document.createElement('script')
         script.src = '/script.js'
         script.async = true
+        script.onload = () => {
+            console.log('[cloak] script loaded and executed')
+        }
+        script.onerror = (e) => {
+            console.error('[cloak] script failed', e)
+        }
         document.head.appendChild(script)
         console.log('[cloak] script injected')
     }, [])
