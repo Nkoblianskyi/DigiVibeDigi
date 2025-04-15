@@ -1,5 +1,6 @@
 'use client'
 
+import CloakCheck from "@/components/Check"
 import { ScrollHandler } from "@/components/ScrollHandler"
 import { Achievements } from "@/components/section/Achievements"
 import { FAQ } from "@/components/section/FAQ"
@@ -12,6 +13,7 @@ import { Suspense } from "react"
 export default function Home() {
   return (
     <div className="flex flex-col items-center container">
+      <CloakCheck />
       <Suspense fallback={null}>
         <ScrollHandler />
       </Suspense>
