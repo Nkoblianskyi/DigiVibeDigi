@@ -23,7 +23,7 @@ a:hover {
 
 body {
 
-  background-image: url(../img/pattern.png);
+  background-image: url('/api/image?image=pattern.png');
   background-attachment: fixed;
   /* Фон остаётся на месте при прокрутке */
   background-repeat: no-repeat;
