@@ -1,7 +1,6 @@
-// app/api/styles/route.ts
 import { NextRequest, NextResponse } from 'next/server';
 import path from 'path';
-import { promises as fs } from 'fs';
+import fs from 'fs/promises';
 
 export async function GET(req: NextRequest) {
     const file = req.nextUrl.searchParams.get('file') || 'style.css';
@@ -9,15 +8,15 @@ export async function GET(req: NextRequest) {
 
     try {
         const css = await fs.readFile(filePath, 'utf8');
+
         return new NextResponse(css, {
-            status: 200,
             headers: {
                 'Content-Type': 'text/css',
-                'Cache-Control': 'no-cache',
+                'Cache-Control': 'no-store',
             },
         });
     } catch (error) {
-        console.error('❌ CSS file read error:', error);
+        console.error('❌ Failed to load CSS file:', error);
         return new NextResponse('Style not found', { status: 404 });
     }
 }
