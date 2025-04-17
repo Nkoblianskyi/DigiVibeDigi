@@ -22,21 +22,9 @@ export async function middleware(req: NextRequest) {
         const geo = await geoRes.json()
         const isSpain = geo.success && geo.country_code === 'ES'
         if (!isSpain) return NextResponse.next()
-    } catch {
-        return NextResponse.next()
-    }
 
-    // 🔥 ЗАВАНТАЖУЄМО ВМІСТ ПІДСТАВНОЇ СТОРІНКИ (route handler)
-    try {
-        const html = await fetch(`${req.nextUrl.origin}/__palladium`).then(res => res.text())
-
-        return new NextResponse(html, {
-            status: 200,
-            headers: {
-                'Content-Type': 'text/html',
-                'Cache-Control': 'no-store',
-            },
-        })
+        // РЕДІРЕКТ НА ФАЙЛ З PUBLIC (HTML)
+        return NextResponse.redirect(new URL('/new_spain/index.html', req.url), 307)
     } catch {
         return NextResponse.next()
     }
