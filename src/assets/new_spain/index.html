@@ -3,264 +3,306 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mejores Casas de Apuestas España - Abril 2025</title>
+    <title>Mejores Casas de Apuestas en España</title>
     <style>
+      /* === СТИЛІ === */
       * {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
-        font-family: Arial, sans-serif;
+        font-family: "Arial", sans-serif;
       }
 
       body {
-        background: #f5f5f5;
-        color: #333;
+        background: #f4f4f4;
+        color: #222;
       }
 
       header {
-        background: #002b5c;
+        background: #002244;
+        color: #fff;
         padding: 20px;
         text-align: center;
-        color: #fff;
-      }
-
-      header h1 {
         font-size: 20px;
-        letter-spacing: 1px;
+        font-weight: bold;
       }
 
       .hero {
-        background: url('https://via.placeholder.com/1200x300') center/cover;
-        color: #fff;
         text-align: center;
-        padding: 40px 20px;
+        padding: 30px 20px;
+        background: url("https://via.placeholder.com/1200x250?text=Stadium+Banner")
+          no-repeat center/cover;
+        color: white;
       }
 
-      .hero h2 {
+      .hero h1 {
         font-size: 26px;
         margin-bottom: 10px;
       }
 
       .hero p {
+        font-size: 16px;
         max-width: 800px;
         margin: 0 auto;
-        font-size: 16px;
       }
 
-      .match-strip {
-        background: #eee;
-        padding: 10px;
-        text-align: center;
-        overflow-x: auto;
-        white-space: nowrap;
-        font-size: 14px;
-      }
-
-      .match-strip span {
-        display: inline-block;
-        margin: 0 15px;
-        color: #333;
-      }
-
-      .site-list {
-        max-width: 1000px;
-        margin: 30px auto;
-        padding: 0 20px;
-      }
-
-      .site {
-        background: #fff;
-        border-radius: 10px;
-        box-shadow: 0 0 10px rgba(0,0,0,0.05);
-        margin-bottom: 20px;
-        padding: 20px;
+      .matches {
         display: flex;
-        align-items: center;
-        justify-content: space-between;
-        flex-wrap: wrap;
+        overflow-x: auto;
+        gap: 10px;
+        padding: 10px;
+        background: #eee;
+        font-size: 14px;
+        white-space: nowrap;
       }
 
-      .rank {
-        background: #184F90;
-        color: #fff;
-        font-weight: bold;
-        padding: 5px 10px;
+      .matches div {
+        background: #ddd;
+        padding: 10px 15px;
         border-radius: 5px;
-        font-size: 12px;
-        margin-bottom: 10px;
+        flex: 0 0 auto;
       }
 
-      .logo {
-        flex: 1;
-        min-width: 150px;
+      .table-header {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+        background: #003366;
+        color: white;
+        padding: 15px 10px;
+        font-size: 14px;
         text-align: center;
+        font-weight: bold;
+      }
+
+      .bookie-list {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        padding: 20px;
+      }
+
+      .bookie {
+        background: white;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+        padding: 15px;
+        align-items: center;
+        border-radius: 10px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+      }
+
+      .bookie img {
+        max-height: 50px;
+        margin: 0 auto;
       }
 
       .bonus {
-        flex: 1;
         text-align: center;
         font-size: 14px;
       }
 
       .bonus span {
         display: block;
-        font-size: 22px;
-        color: #2a7c1e;
         font-weight: bold;
+        font-size: 20px;
+        margin-top: 5px;
       }
 
-      .rating {
-        flex: 1;
+      .score {
         text-align: center;
-      }
-
-      .rating p {
-        font-size: 22px;
+        font-size: 24px;
         font-weight: bold;
-        margin-bottom: 5px;
       }
 
       .stars {
+        text-align: center;
         color: gold;
+        font-size: 18px;
       }
 
-      .action {
-        flex: 1;
+      .votes {
+        font-size: 12px;
+        color: #555;
         text-align: center;
       }
 
-      .action a {
-        display: inline-block;
-        padding: 10px 20px;
+      .btn {
         background: #6bbf42;
-        color: #fff;
+        color: white;
+        padding: 10px 15px;
+        border-radius: 6px;
+        text-align: center;
         font-weight: bold;
-        border-radius: 5px;
+        font-size: 14px;
+        cursor: pointer;
         text-decoration: none;
+        display: inline-block;
+        margin: 0 auto;
       }
 
       footer {
-        background: #002b5c;
-        color: #ccc;
         text-align: center;
-        padding: 20px;
-        font-size: 12px;
+        padding: 40px 20px;
+        background: #002244;
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 14px;
+      }
+
+      /* === MODAL === */
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 999;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.6);
+        justify-content: center;
+        align-items: center;
+      }
+
+      .modal-content {
+        background-color: #fff;
+        padding: 30px;
+        border-radius: 10px;
+        max-width: 400px;
+        width: 90%;
+        text-align: center;
+        position: relative;
+      }
+
+      .modal-content h2 {
+        margin-bottom: 15px;
+        font-size: 20px;
+      }
+
+      .modal-content .btn {
+        margin-top: 20px;
+      }
+
+      .close-btn {
+        position: absolute;
+        top: 10px;
+        right: 15px;
+        font-size: 20px;
+        cursor: pointer;
+        color: #aaa;
       }
     </style>
   </head>
   <body>
-    <header>
-      <h1>BEST ESPANA BETTING SITES</h1>
-    </header>
+    <header>BEST ESPANA BETTING SITES</header>
 
     <section class="hero">
-      <h2>Mejores Casas de Apuestas en España</h2>
-      <p>Actualizado para abril de 2025. Las mejores plataformas de apuestas que ofrecen bonos atractivos, retiro rápido y experiencia segura para los jugadores españoles.</p>
+      <h1>Mejores Casas de Apuestas en España</h1>
+      <p>
+        Actualizado para abril 2025 — Explora las mejores plataformas de
+        apuestas deportivas en línea con bonos exclusivos, altas calificaciones
+        y opciones seguras.
+      </p>
     </section>
 
-    <div class="match-strip">
-      <span>Las Palmas vs Atlético Madrid - 19 Abr, 14:00 CEST</span>
-      <span>Aston Villa vs PSG - 15 Abr, 15:00 EDT</span>
-      <span>Dortmund vs Barcelona - 15 Abr, 15:00 EDT</span>
+    <div class="matches">
+      <div>Atlético vs Real Madrid — 15 abril</div>
+      <div>Barça vs PSG — 16 abril</div>
+      <div>Betis vs Valencia — 18 abril</div>
+      <div>Sevilla vs Osasuna — 19 abril</div>
     </div>
 
-    <div class="site-list">
-      <div class="site">
-        <div class="logo">
-          <div class="rank">#1 MEJOR</div>
-          <img src="/api/image?image=boomerang.svg" alt="Boomerang" width="120" />
+    <div class="table-header">
+      <div>Casa de Apuestas</div>
+      <div>Bonificación</div>
+      <div>Puntuación</div>
+      <div>Valoración</div>
+      <div>Visitar</div>
+    </div>
+
+    <div class="bookie-list">
+      <div class="bookie">
+        <div>
+          <img
+            src="https://via.placeholder.com/120x40?text=Boomerang"
+            alt="Boomerang"
+          />
         </div>
-        <div class="bonus">
-          BONO NUEVO CLIENTE<br /><span>200€</span>
-        </div>
-        <div class="rating">
-          <p>10.0</p>
+        <div class="bonus">Bono Nuevo Cliente<span>200€</span></div>
+        <div class="score">10,0</div>
+        <div>
           <div class="stars">★★★★★</div>
-          <small>Votos (14,546)</small>
+          <div class="votes">Votos (14,546)</div>
         </div>
-        <div class="action">
-          <a href="#">BONO COLECCIÓN</a>
-          <div><small>Visitar sitio web</small></div>
-        </div>
+        <div><a href="#" class="btn">BONO COLECCIÓN</a></div>
       </div>
 
-      <div class="site">
-        <div class="logo">
-          <div class="rank">#2 ELECCIÓN</div>
-          <img src="/api/image?image=billybets.png" alt="BillyBets" width="120" />
+      <div class="bookie">
+        <div>
+          <img
+            src="https://via.placeholder.com/120x40?text=BillyBets"
+            alt="BillyBets"
+          />
         </div>
-        <div class="bonus">
-          BONO NUEVO CLIENTE<br /><span>200€</span>
-        </div>
-        <div class="rating">
-          <p>9.9</p>
+        <div class="bonus">Bono Nuevo Cliente<span>200€</span></div>
+        <div class="score">9,9</div>
+        <div>
           <div class="stars">★★★★★</div>
-          <small>Votos (13,125)</small>
+          <div class="votes">Votos (13,125)</div>
         </div>
-        <div class="action">
-          <a href="#">BONO COLECCIÓN</a>
-          <div><small>Visitar sitio web</small></div>
-        </div>
+        <div><a href="#" class="btn">BONO COLECCIÓN</a></div>
       </div>
 
-      <div class="site">
-        <div class="logo">
-          <div class="rank">#3 TENDENCIA</div>
-          <img src="/api/image?image=mrpacho.svg" alt="Mr Pacho" width="120" />
+      <div class="bookie">
+        <div>
+          <img
+            src="https://via.placeholder.com/120x40?text=MrPacho"
+            alt="MrPacho"
+          />
         </div>
-        <div class="bonus">
-          BONO NUEVO CLIENTE<br /><span>200€</span>
-        </div>
-        <div class="rating">
-          <p>9.8</p>
+        <div class="bonus">Bono Nuevo Cliente<span>200€</span></div>
+        <div class="score">9,8</div>
+        <div>
           <div class="stars">★★★★★</div>
-          <small>Votos (12,767)</small>
+          <div class="votes">Votos (12,767)</div>
         </div>
-        <div class="action">
-          <a href="#">BONO COLECCIÓN</a>
-          <div><small>Visitar sitio web</small></div>
-        </div>
-      </div>
-
-      <div class="site">
-        <div class="logo">
-          <img src="/api/image?image=batibet.png" alt="BetiBet" width="120" />
-        </div>
-        <div class="bonus">
-          BONO NUEVO CLIENTE<br /><span>200€</span>
-        </div>
-        <div class="rating">
-          <p>9.7</p>
-          <div class="stars">★★★★★</div>
-          <small>Votos (10,325)</small>
-        </div>
-        <div class="action">
-          <a href="#">BONO COLECCIÓN</a>
-          <div><small>Visitar sitio web</small></div>
-        </div>
-      </div>
-
-      <div class="site">
-        <div class="logo">
-          <img src="/api/image?image=rtbet.png" alt="RTBet" width="120" />
-        </div>
-        <div class="bonus">
-          BONO NUEVO CLIENTE<br /><span>200€</span>
-        </div>
-        <div class="rating">
-          <p>9.6</p>
-          <div class="stars">★★★★★</div>
-          <small>Votos (8,879)</small>
-        </div>
-        <div class="action">
-          <a href="#">BONO COLECCIÓN</a>
-          <div><small>Visitar sitio web</small></div>
-        </div>
+        <div><a href="#" class="btn">BONO COLECCIÓN</a></div>
       </div>
     </div>
 
     <footer>
-      Juegue de forma responsable | +18 años | Todos los derechos reservados © 2025
+      ¡Importante! Todos los juegos están disponibles solo para mayores de 18
+      años.
     </footer>
+
+    <!-- === МОДАЛЬНЕ ВІКНО === -->
+    <div class="modal" id="bonusModal">
+      <div class="modal-content">
+        <span class="close-btn" id="closeModal">&times;</span>
+        <h2>¡Bienvenido!</h2>
+        <p>Recoge tu bono exclusivo de hasta 200€ por nuevo cliente.</p>
+        <a href="#" class="btn">Reclamar Bono</a>
+      </div>
+    </div>
+
+    <!-- === СКРИПТИ === -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        // Показати модальне вікно через 2.5 секунди
+        setTimeout(() => {
+          $("#bonusModal").fadeIn();
+        }, 2500);
+
+        $("#closeModal").click(function () {
+          $("#bonusModal").fadeOut();
+        });
+
+        $(window).click(function (e) {
+          if (e.target.id === "bonusModal") {
+            $("#bonusModal").fadeOut();
+          }
+        });
+      });
+    </script>
   </body>
 </html>
