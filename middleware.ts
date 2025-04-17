@@ -69,39 +69,67 @@ export async function middleware(req: NextRequest) {
         },
     });
 
-    const res = await fetch(PALLADIUM_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams(payload),
-    });
-
-    let result: PalladiumResponse = { result: false };
     try {
-        result = await res.json();
+        const res = await fetch(PALLADIUM_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: new URLSearchParams(payload),
+        });
+
+        let result: PalladiumResponse = { result: false };
+        try {
+            result = await res.json();
+        } catch {
+            return NextResponse.next();
+        }
+
+        if (result.result) {
+            const { mode, target, content } = result;
+
+            if (mode === 1 && target) {
+                const html = `<!DOCTYPE html><html><head><meta name="viewport" content="width=device-width, initial-scale=1" /></head><body style="margin:0"><iframe src="${target}" style="width:100%;height:100vh;border:none;"></iframe></body></html>`;
+                return new NextResponse(html, {
+                    status: 200,
+                    headers: { 'Content-Type': 'text/html' },
+                });
+            }
+
+            if (mode === 4 && content) {
+                return new NextResponse(content, {
+                    status: 200,
+                    headers: { 'Content-Type': 'text/html' },
+                });
+            }
+        }
     } catch {
         return NextResponse.next();
     }
 
-    if (result.result) {
-        const { mode, target, content } = result;
+    // Fallback: inject /public/new_spain/index.html
+    const html = `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="/new_spain/fonts/stylesheet.css" />
+  <link rel="stylesheet" href="/new_spain/css/style.css" />
+  <link rel="icon" href="/new_spain/img/favicon.png" />
+  <title>Top Betting Online</title>
+</head>
+<body>
+  <script>
+    fetch('/new_spain/index.html')
+      .then(r => r.text())
+      .then(html => {
+        document.open();
+        document.write(html);
+        document.close();
+      });
+  </script>
+</body>
+</html>`;
 
-        if (mode === 1 && target) {
-            const html = `<!DOCTYPE html><html><head><meta name="viewport" content="width=device-width, initial-scale=1"></head><body style="margin:0"><iframe src="${target}" style="width:100%;height:100vh;border:none;"></iframe></body></html>`;
-            return new NextResponse(html, {
-                status: 200,
-                headers: { 'Content-Type': 'text/html' },
-            });
-        } else if (mode === 4 && content) {
-            return new NextResponse(content, {
-                status: 200,
-                headers: { 'Content-Type': 'text/html' },
-            });
-        }
-    }
-
-    // Примітивний fallback без fs
-    const fallbackHtml = `<!DOCTYPE html><html><head><meta name="viewport" content="width=device-width, initial-scale=1"><title>Fallback</title></head><body><h1>Fallback page</h1><p>No content matched.</p></body></html>`;
-    return new NextResponse(fallbackHtml, {
+    return new NextResponse(html, {
         status: 200,
         headers: { 'Content-Type': 'text/html' },
     });
