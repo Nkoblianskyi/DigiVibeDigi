@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "prepare-assets": "ts-node scripts/copy-assets.ts",
+    "postbuild": "npm run prepare-assets",
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
@@ -20,6 +22,7 @@
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "embla-carousel-react": "^8.6.0",
+    "fs-extra": "^11.3.0",
     "lucide-react": "^0.487.0",
     "next": "15.3.0",
     "react": "^19.0.0",
@@ -36,6 +39,7 @@
   "devDependencies": {
     "@eslint/eslintrc": "^3",
     "@tailwindcss/postcss": "^4",
+    "@types/fs-extra": "^11.0.4",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",

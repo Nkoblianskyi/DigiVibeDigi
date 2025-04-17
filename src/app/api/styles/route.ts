@@ -8,16 +8,19 @@ export async function GET(req: NextRequest) {
         return new NextResponse('File parameter is missing', { status: 400 });
     }
 
-    const filePath = path.resolve('src/assets/new_spain/css', file);
+    const filePath = path.resolve('public/hidden_assets/css', file);
 
     try {
-        const fileContent = await fs.promises.readFile(filePath, 'utf-8');
-        return new NextResponse(fileContent, {
+        const css = await fs.promises.readFile(filePath, 'utf-8');
+        return new NextResponse(css, {
             status: 200,
-            headers: { 'Content-Type': 'text/css' },
+            headers: {
+                'Content-Type': 'text/css',
+                'Cache-Control': 'public, max-age=31536000, immutable',
+            },
         });
     } catch (err) {
-        console.error('[STYLES ROUTE] Error reading file:', err);
-        return new NextResponse('File not found', { status: 404 });
+        console.error('[STYLES ROUTE] Error:', err);
+        return new NextResponse('CSS file not found', { status: 404 });
     }
 }

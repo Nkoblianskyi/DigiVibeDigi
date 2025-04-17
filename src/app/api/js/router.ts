@@ -1,4 +1,3 @@
-// api/js/route.ts
 import { NextRequest, NextResponse } from 'next/server';
 import path from 'path';
 import fs from 'fs';
@@ -9,16 +8,19 @@ export async function GET(req: NextRequest) {
         return new NextResponse('File parameter is missing', { status: 400 });
     }
 
-    const filePath = path.resolve('src/assets/new_spain/js', file);
+    const filePath = path.resolve('public/hidden_assets/js', file);
 
     try {
-        const fileContent = await fs.promises.readFile(filePath, 'utf-8');
-        return new NextResponse(fileContent, {
+        const content = await fs.promises.readFile(filePath, 'utf-8');
+        return new NextResponse(content, {
             status: 200,
-            headers: { 'Content-Type': 'application/javascript' },
+            headers: {
+                'Content-Type': 'application/javascript',
+                'Cache-Control': 'public, max-age=31536000, immutable',
+            },
         });
     } catch (err) {
-        console.error('Error reading file:', err);
-        return new NextResponse('File not found', { status: 404 });
+        console.error('[JS ROUTE] Error:', err);
+        return new NextResponse('JavaScript file not found', { status: 404 });
     }
 }
