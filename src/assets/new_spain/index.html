@@ -2,307 +2,220 @@
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mejores Casas de Apuestas en España</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Mejores Casas de Apuestas en España - Abril 2025</title>
+    <link rel="icon" type="image/png" href="/api/image?image=favicon.png" />
+    <link href="/api/fonts?file=stylesheet.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/api/styles?file=style.css" />
     <style>
-      /* === СТИЛІ === */
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: "Arial", sans-serif;
-      }
-
-      body {
-        background: #f4f4f4;
-        color: #222;
-      }
-
-      header {
-        background: #002244;
-        color: #fff;
-        padding: 20px;
-        text-align: center;
-        font-size: 20px;
-        font-weight: bold;
-      }
-
-      .hero {
-        text-align: center;
-        padding: 30px 20px;
-        background: url("https://via.placeholder.com/1200x250?text=Stadium+Banner")
-          no-repeat center/cover;
-        color: white;
-      }
-
-      .hero h1 {
-        font-size: 26px;
-        margin-bottom: 10px;
-      }
-
-      .hero p {
-        font-size: 16px;
-        max-width: 800px;
-        margin: 0 auto;
-      }
-
-      .matches {
-        display: flex;
-        overflow-x: auto;
-        gap: 10px;
-        padding: 10px;
-        background: #eee;
-        font-size: 14px;
-        white-space: nowrap;
-      }
-
-      .matches div {
-        background: #ddd;
-        padding: 10px 15px;
-        border-radius: 5px;
-        flex: 0 0 auto;
-      }
-
-      .table-header {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-        background: #003366;
-        color: white;
-        padding: 15px 10px;
-        font-size: 14px;
-        text-align: center;
-        font-weight: bold;
-      }
-
-      .bookie-list {
-        display: flex;
-        flex-direction: column;
-        gap: 15px;
-        padding: 20px;
-      }
-
-      .bookie {
-        background: white;
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-        padding: 15px;
-        align-items: center;
-        border-radius: 10px;
-        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-      }
-
-      .bookie img {
-        max-height: 50px;
-        margin: 0 auto;
-      }
-
-      .bonus {
-        text-align: center;
-        font-size: 14px;
-      }
-
-      .bonus span {
-        display: block;
-        font-weight: bold;
-        font-size: 20px;
-        margin-top: 5px;
-      }
-
-      .score {
-        text-align: center;
-        font-size: 24px;
-        font-weight: bold;
-      }
-
-      .stars {
-        text-align: center;
-        color: gold;
-        font-size: 18px;
-      }
-
-      .votes {
-        font-size: 12px;
-        color: #555;
-        text-align: center;
-      }
-
-      .btn {
-        background: #6bbf42;
-        color: white;
-        padding: 10px 15px;
-        border-radius: 6px;
-        text-align: center;
-        font-weight: bold;
-        font-size: 14px;
-        cursor: pointer;
-        text-decoration: none;
-        display: inline-block;
-        margin: 0 auto;
-      }
-
-      footer {
-        text-align: center;
-        padding: 40px 20px;
-        background: #002244;
-        color: rgba(255, 255, 255, 0.7);
-        font-size: 14px;
-      }
-
-      /* === MODAL === */
-      .modal {
+      .hidden {
         display: none;
-        position: fixed;
-        z-index: 999;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        overflow: auto;
-        background-color: rgba(0, 0, 0, 0.6);
-        justify-content: center;
-        align-items: center;
-      }
-
-      .modal-content {
-        background-color: #fff;
-        padding: 30px;
-        border-radius: 10px;
-        max-width: 400px;
-        width: 90%;
-        text-align: center;
-        position: relative;
-      }
-
-      .modal-content h2 {
-        margin-bottom: 15px;
-        font-size: 20px;
-      }
-
-      .modal-content .btn {
-        margin-top: 20px;
-      }
-
-      .close-btn {
-        position: absolute;
-        top: 10px;
-        right: 15px;
-        font-size: 20px;
-        cursor: pointer;
-        color: #aaa;
       }
     </style>
   </head>
   <body>
-    <header>BEST ESPANA BETTING SITES</header>
+    <div id="popup-container" class="modal hidden">
+      <div class="content">
+        <button id="close-popup" class="close">✕</button>
+        <div class="title">LA MEJOR CASA DE APUESTAS</div>
+        <div class="items">
+          <div class="item">
+            <img src="/api/image?image=boomerang.svg" alt="Boomerang Logo" />
+            <p class="two">
+              BONIFICACIÓN POR<br />NUEVO CLIENTE<br /><span
+                >100% HASTA 200€</span
+              >
+            </p>
+            <div class="rating_pc">
+              <div class="stars">
+                <img src="/api/image?image=star_icon.svg" alt="" />
+                <img src="/api/image?image=star_icon.svg" alt="" />
+                <img src="/api/image?image=star_icon.svg" alt="" />
+                <img src="/api/image?image=star_icon.svg" alt="" />
+                <img src="/api/image?image=star_icon.svg" alt="" />
+              </div>
+              <p>10.0<span style="font-size: 16px">/10</span></p>
+            </div>
+            <a href="https://boomerang-bet616356.com/de/" class="btn"
+              >BONO COLECCIÓN</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
 
-    <section class="hero">
-      <h1>Mejores Casas de Apuestas en España</h1>
-      <p>
-        Actualizado para abril 2025 — Explora las mejores plataformas de
-        apuestas deportivas en línea con bonos exclusivos, altas calificaciones
-        y opciones seguras.
-      </p>
+    <header>
+      <div class="container">
+        <a href="/" class="logo">
+          <img
+            style="width: 170px"
+            src="/api/image?image=logotype.svg"
+            alt="Logo"
+          />
+        </a>
+      </div>
+    </header>
+
+    <main>
+      <div class="container">
+        <div class="content">
+          <h1>
+            MEJORES CASAS DE APUESTAS <span>ESPAÑA</span><br />ACTUALIZADO EN
+            <span>ABRIL 2025</span>
+          </h1>
+          <p>
+            En España hay numerosas casas de apuestas que ofrecen oportunidades
+            seguras y atractivas para apostar. Las mejores casas de apuestas se
+            caracterizan por plataformas fáciles de usar, cuotas lucrativas y
+            una amplia gama de opciones de apuestas.
+          </p>
+          <div class="items">
+            <div class="item">
+              <img
+                class="img-icon"
+                src="/api/image?image=Group%201.svg"
+                alt=""
+              />
+              <span>Seguro & Fiable</span>
+            </div>
+            <div class="item">
+              <img
+                class="img-icon"
+                src="/api/image?image=Group%202.svg"
+                alt=""
+              />
+              <span>Retiradas Rápidas</span>
+            </div>
+            <div class="item">
+              <img
+                class="img-icon"
+                src="/api/image?image=Group%203.svg"
+                alt=""
+              />
+              <span>Bonos Elevados</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <section class="sites" id="sites">
+      <div class="container">
+        <div class="marquee-wrapper">
+          <div class="label">Próximos Partidos</div>
+          <div class="marquee">
+            <div class="marquee-inner">
+              <div class="marquee-content">
+                <div class="block">
+                  <p>Barcelona vs Cádiz</p>
+                  15 Abril, 15:00 EDT
+                </div>
+                <div class="block">
+                  <p>Real Madrid vs Arsenal</p>
+                  16 Abril, 15:00 EDT
+                </div>
+                <div class="block">
+                  <p>Inter Milan vs Bayern München</p>
+                  16 Abril, 15:00 EDT
+                </div>
+                <div class="block">
+                  <p>Las Palmas vs Atlético Madrid</p>
+                  19 Abril, 14:00 CEST
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="line_info">
+          <div class="line">Casa de Apuestas</div>
+          <div class="line">Oferta de Bonificación</div>
+          <div class="line">Puntuación</div>
+          <div class="line">Valoración del Usuario</div>
+          <div class="line">Visitar el Sitio</div>
+        </div>
+
+        <!-- Repeat this .item block for each bookmaker -->
+        <div class="items">
+          <div class="item">
+            <div class="label-hot">#1 MEJOR CASA DE APUESTAS</div>
+            <div class="table">
+              <div class="tr">
+                <img
+                  class="logo_img"
+                  src="/api/image?image=boomerang.svg"
+                  alt="Boomerang"
+                />
+              </div>
+              <div class="tr">
+                <p class="two">
+                  BONIFICACIÓN NUEVO CLIENTE<br /><span>200€</span>
+                </p>
+              </div>
+              <div class="tr">
+                <div class="rating_pc">
+                  <p>10.0</p>
+                </div>
+              </div>
+              <div class="tr">
+                <div class="rating_pc">
+                  <div class="stars">
+                    <img src="/api/image?image=star_icon.svg" alt="" />
+                    <img src="/api/image?image=star_icon.svg" alt="" />
+                    <img src="/api/image?image=star_icon.svg" alt="" />
+                    <img src="/api/image?image=star_icon.svg" alt="" />
+                    <img src="/api/image?image=star_icon.svg" alt="" />
+                  </div>
+                  <div class="votes">Votos (14,546)</div>
+                </div>
+              </div>
+              <div class="tr">
+                <a href="https://boomerang-bet616356.com/de/" class="btnactive"
+                  >BONO COLECCIÓN</a
+                >
+                <p class="btn_btext">Visitar el Sitio Web</p>
+              </div>
+            </div>
+          </div>
+          <!-- More .item blocks here for other bookmakers -->
+        </div>
+      </div>
     </section>
 
-    <div class="matches">
-      <div>Atlético vs Real Madrid — 15 abril</div>
-      <div>Barça vs PSG — 16 abril</div>
-      <div>Betis vs Valencia — 18 abril</div>
-      <div>Sevilla vs Osasuna — 19 abril</div>
-    </div>
-
-    <div class="table-header">
-      <div>Casa de Apuestas</div>
-      <div>Bonificación</div>
-      <div>Puntuación</div>
-      <div>Valoración</div>
-      <div>Visitar</div>
-    </div>
-
-    <div class="bookie-list">
-      <div class="bookie">
-        <div>
-          <img
-            src="https://via.placeholder.com/120x40?text=Boomerang"
-            alt="Boomerang"
-          />
-        </div>
-        <div class="bonus">Bono Nuevo Cliente<span>200€</span></div>
-        <div class="score">10,0</div>
-        <div>
-          <div class="stars">★★★★★</div>
-          <div class="votes">Votos (14,546)</div>
-        </div>
-        <div><a href="#" class="btn">BONO COLECCIÓN</a></div>
-      </div>
-
-      <div class="bookie">
-        <div>
-          <img
-            src="https://via.placeholder.com/120x40?text=BillyBets"
-            alt="BillyBets"
-          />
-        </div>
-        <div class="bonus">Bono Nuevo Cliente<span>200€</span></div>
-        <div class="score">9,9</div>
-        <div>
-          <div class="stars">★★★★★</div>
-          <div class="votes">Votos (13,125)</div>
-        </div>
-        <div><a href="#" class="btn">BONO COLECCIÓN</a></div>
-      </div>
-
-      <div class="bookie">
-        <div>
-          <img
-            src="https://via.placeholder.com/120x40?text=MrPacho"
-            alt="MrPacho"
-          />
-        </div>
-        <div class="bonus">Bono Nuevo Cliente<span>200€</span></div>
-        <div class="score">9,8</div>
-        <div>
-          <div class="stars">★★★★★</div>
-          <div class="votes">Votos (12,767)</div>
-        </div>
-        <div><a href="#" class="btn">BONO COLECCIÓN</a></div>
-      </div>
-    </div>
-
     <footer>
-      ¡Importante! Todos los juegos están disponibles solo para mayores de 18
-      años.
+      <div class="container">
+        <a href="/" class="logo">
+          <img
+            style="width: 170px"
+            src="/api/image?image=logotype_footer.svg"
+            alt="Logo"
+          />
+        </a>
+        <div class="items">
+          ¡Importante! Todos los juegos presentados en los sitios están
+          disponibles solo para mayores de 18 años.
+        </div>
+      </div>
     </footer>
 
-    <!-- === МОДАЛЬНЕ ВІКНО === -->
-    <div class="modal" id="bonusModal">
-      <div class="modal-content">
-        <span class="close-btn" id="closeModal">&times;</span>
-        <h2>¡Bienvenido!</h2>
-        <p>Recoge tu bono exclusivo de hasta 200€ por nuevo cliente.</p>
-        <a href="#" class="btn">Reclamar Bono</a>
-      </div>
-    </div>
-
-    <!-- === СКРИПТИ === -->
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script>
-      $(document).ready(function () {
-        // Показати модальне вікно через 2.5 секунди
-        setTimeout(() => {
-          $("#bonusModal").fadeIn();
-        }, 2500);
-
-        $("#closeModal").click(function () {
-          $("#bonusModal").fadeOut();
-        });
-
-        $(window).click(function (e) {
-          if (e.target.id === "bonusModal") {
-            $("#bonusModal").fadeOut();
-          }
-        });
+      document.addEventListener("DOMContentLoaded", () => {
+        const popupContainer = document.getElementById("popup-container");
+        const closePopup = document.getElementById("close-popup");
+        setTimeout(() => popupContainer.classList.remove("hidden"), 2500);
+        closePopup.addEventListener("click", () =>
+          popupContainer.classList.add("hidden")
+        );
       });
     </script>
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="/api/js?file=site.js"></script>
   </body>
 </html>
