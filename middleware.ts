@@ -15,17 +15,16 @@ export async function middleware(req: NextRequest) {
         '8.8.8.8'
     const ip = ipHeader.split(',')[0].trim()
 
-    // Geo check
     try {
         const geoRes = await fetch(`https://ipwho.is/${ip}`)
         const geo = await geoRes.json()
         const isSpain = geo.success && geo.country_code === 'ES'
+
         if (!isSpain) return NextResponse.next()
     } catch {
         return NextResponse.next()
     }
 
-    // Fallback — прокидаємо в __palladium з IP як параметром
     const url = req.nextUrl.clone()
     url.pathname = '/__palladium'
     url.searchParams.set('ip', ip)

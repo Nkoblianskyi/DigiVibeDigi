@@ -64,21 +64,26 @@ export async function GET(req: NextRequest) {
         })
       }
     }
-  } catch (e) {
-    console.error('[PALLADIUM ERROR]', e)
+  } catch (error) {
+    console.error('[__PALLADIUM] Error:', error)
   }
 
-  // Fallback — статична сторінка з public
-  const { promises: fs } = await import('fs')
-  const { join } = await import('path')
-  const filePath = join(process.cwd(), 'public', 'new_spain', 'index.html')
-  const html = await fs.readFile(filePath, 'utf8')
+  // Fallback: load local file
+  try {
+    const { promises: fs } = await import('fs')
+    const { join } = await import('path')
+    const filePath = join(process.cwd(), 'public', 'new_spain', 'index.html')
+    const html = await fs.readFile(filePath, 'utf8')
 
-  return new NextResponse(html, {
-    status: 200,
-    headers: {
-      'Content-Type': 'text/html',
-      'Cache-Control': 'no-store',
-    },
-  })
+    return new NextResponse(html, {
+      status: 200,
+      headers: {
+        'Content-Type': 'text/html',
+        'Cache-Control': 'no-store',
+      },
+    })
+  } catch (e) {
+    console.error('[__PALLADIUM] Failed to serve fallback:', e)
+    return new NextResponse('Fallback failed', { status: 500 })
+  }
 }
