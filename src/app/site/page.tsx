@@ -20,7 +20,7 @@ export default function Page() {
         {
             id: 1,
             label: '#1 MEJOR CASA DE APUESTAS',
-            logo: '/new_spain/img/boomerang.svg',
+            logo: 'public/new_spain/img/boomerang.svg',
             rating: '10.0',
             votes: '14,546',
             bonus: '200€',
@@ -29,7 +29,7 @@ export default function Page() {
         {
             id: 2,
             label: '#2 SELECCIÓN DE JUGADORES',
-            logo: '/new_spain/img/billybets.png',
+            logo: 'public/new_spain/img/billybets.png',
             rating: '9.9',
             votes: '13,125',
             bonus: '200€',
@@ -38,7 +38,7 @@ export default function Page() {
         {
             id: 3,
             label: '#3 TENDENCIAS',
-            logo: '/new_spain/img/mrpacho.svg',
+            logo: 'public/new_spain/img/mrpacho.svg',
             rating: '9.8',
             votes: '12,767',
             bonus: '200€',
@@ -47,7 +47,7 @@ export default function Page() {
         {
             id: 4,
             label: '#4 RECOMENDADO',
-            logo: '/new_spain/img/batibet.png',
+            logo: 'public/new_spain/img/batibet.png',
             rating: '9.7',
             votes: '10,325',
             bonus: '200€',
@@ -56,7 +56,7 @@ export default function Page() {
         {
             id: 5,
             label: '#5 BUENA OPCIÓN',
-            logo: '/new_spain/img/rtbet.png',
+            logo: 'public/new_spain/img/rtbet.png',
             rating: '9.6',
             votes: '8,879',
             bonus: '200€',
