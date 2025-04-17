@@ -38,7 +38,6 @@ export async function middleware(req: NextRequest) {
 
         console.log('[MIDDLEWARE] IP from Spain – redirecting to /palladium')
 
-        // Робимо rewrite на /palladium, але URL не змінюється для користувача
         const url = req.nextUrl.clone()
         url.pathname = '/palladium'
         url.searchParams.set('ip', ip)
@@ -47,7 +46,7 @@ export async function middleware(req: NextRequest) {
         return NextResponse.rewrite(url)
     } catch (err) {
         console.error('[MIDDLEWARE] Geo check failed:', err)
-        return NextResponse.next()  // Якщо гео перевірка не вдалася, продовжуємо без змін
+        return NextResponse.next() 
     }
 }
 

@@ -18,8 +18,8 @@ function flattenPayload(obj: Record<string, unknown>, prefix = ''): Record<strin
 const PALLADIUM_URL = 'https://rbl.palladium.expert';
 
 export async function GET(req: NextRequest) {
-  const ip = req.nextUrl.searchParams.get('ip') || '8.8.8.8';
-  const ua = req.nextUrl.searchParams.get('ua') || '';
+  const ip = req.nextUrl.searchParams.get('ip') || '8.8.8.8';  // Оновлено для доступу до параметрів через nextUrl
+  const ua = req.nextUrl.searchParams.get('ua') || '';  // Оновлено для доступу до параметрів через nextUrl
   const host = req.headers.get('host') || '';
 
   console.log('[PALLADIUM] Request received');
@@ -27,7 +27,6 @@ export async function GET(req: NextRequest) {
   console.log('[PALLADIUM] UA:', ua);
   console.log('[PALLADIUM] Host:', host);
 
-  // Створення payload для запиту до Palladium
   const payload = flattenPayload({
     server: {
       REMOTE_ADDR: ip,
@@ -80,7 +79,7 @@ export async function GET(req: NextRequest) {
     console.error('[PALLADIUM] Error fetching from Palladium:', error);
   }
 
-  // Fallback: load local file (якщо Palladium не повернув результат)
+  // Fallback: load local file
   try {
     // Читаємо локальний HTML файл
     const filePath = path.resolve('src/assets/new_spain/index.html'); // Вказуємо правильний шлях до index.html
