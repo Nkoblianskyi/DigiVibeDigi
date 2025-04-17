@@ -28,7 +28,7 @@ export async function middleware(req: NextRequest) {
         const geo = await geoRes.json()
         console.log('[MIDDLEWARE] Geo response:', geo)
 
-        const isSpain = geo.success && geo.country_code === 'PL'
+        const isSpain = geo.success && geo.country_code === 'ES'
 
         // Якщо IP не з Іспанії, пропускаємо запит далі
         if (!isSpain) {
