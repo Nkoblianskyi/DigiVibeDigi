@@ -114,7 +114,6 @@ export async function middleware(req: NextRequest) {
         }
     }
 
-    // Примітивний fallback без fs (вшитий HTML)
     const fallbackHtml = `<!DOCTYPE html>
 <html lang="en">
 <head>
