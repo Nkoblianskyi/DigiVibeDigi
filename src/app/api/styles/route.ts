@@ -1,4 +1,3 @@
-// api/styles/route.ts
 import { NextRequest, NextResponse } from 'next/server';
 import path from 'path';
 import fs from 'fs';
@@ -8,6 +7,7 @@ export async function GET(req: NextRequest) {
     if (!file) {
         return new NextResponse('File parameter is missing', { status: 400 });
     }
+
     const filePath = path.resolve('src/assets/new_spain/css', file);
 
     try {
@@ -17,7 +17,7 @@ export async function GET(req: NextRequest) {
             headers: { 'Content-Type': 'text/css' },
         });
     } catch (err) {
-        console.error('Error reading file:', err);
+        console.error('[STYLES ROUTE] Error reading file:', err);
         return new NextResponse('File not found', { status: 404 });
     }
 }

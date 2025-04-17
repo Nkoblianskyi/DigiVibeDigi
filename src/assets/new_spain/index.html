@@ -1,53 +1,40 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
+<html lang="es">
+  <<head>
     <meta charset="UTF-8" />
     <meta
       name="viewport"
       content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
     />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-
-    <!-- Preload critical CSS for faster rendering -->
-    <link
-      rel="preload"
-      href="/api/styles?file=new_spain/css/style.css"
-      as="style"
-    />
-    <link
-      rel="preload"
-      href="/api/styles?file=new_spain/fonts/stylesheet.css"
-      as="style"
-    />
-
-    <!-- Apply styles immediately -->
-    <link
-      href="/api/styles?file=new_spain/fonts/stylesheet.css"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="/api/styles?file=new_spain/css/style.css" />
-
-    <link
-      rel="icon"
-      type="image/png"
-      href="/api/image?image=new_spain/img/favicon.png"
-    />
     <title>Top Betting Online</title>
+
+    <!-- Preload critical CSS -->
+    <link rel="preload" href="/api/styles?file=style.css" as="style" />
+    <link rel="preload" href="/api/fonts?file=stylesheet.css" as="style" />
+
+    <!-- Load CSS -->
+    <link href="/api/fonts?file=stylesheet.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/api/styles?file=style.css" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/api/image?image=favicon.png" />
   </head>
+
   <body>
     <main>
       <div id="popup-container" class="hidden">
         <div class="popup">
           <button id="close-popup" class="close-btn">✖</button>
           <div class="banner">
-            <span style="color: #fff; font-weight: 700"
-              >LA MEJOR CASA DE APUESTAS</span
-            >
+            <span style="color: #fff; font-weight: 700">
+              LA MEJOR CASA DE APUESTAS
+            </span>
           </div>
           <div class="popup-content">
             <img
               style="width: 200px"
-              src="/api/image?image=new_spain/img/boomerang.svg"
+              src="/api/image?image=boomerang.svg"
               alt="Vegas Logo"
               class="logo"
             />
@@ -65,27 +52,27 @@
               "
             >
               <img
-                src="/api/image?image=new_spain/img/star_icon.svg"
+                src="/api/image?image=star_icon.svg"
                 alt=""
                 style="vertical-align: middle"
               />
               <img
-                src="/api/image?image=new_spain/img/star_icon.svg"
+                src="/api/image?image=star_icon.svg"
                 alt=""
                 style="vertical-align: middle"
               />
               <img
-                src="/api/image?image=new_spain/img/star_icon.svg"
+                src="/api/image?image=star_icon.svg"
                 alt=""
                 style="vertical-align: middle"
               />
               <img
-                src="/api/image?image=new_spain/img/star_icon.svg"
+                src="/api/image?image=star_icon.svg"
                 alt=""
                 style="vertical-align: middle"
               />
               <img
-                src="/api/image?image=new_spain/img/star_icon.svg"
+                src="/api/image?image=star_icon.svg"
                 alt=""
                 style="vertical-align: middle"
               />
@@ -97,7 +84,6 @@
                   padding-bottom: 0px;
                   margin: 0;
                 "
-                class="textinfo"
               >
                 10.0<span style="font-weight: 700; font-size: 16px">/10</span>
               </p>
@@ -115,8 +101,8 @@
           <a href="/" class="logo">
             <img
               style="width: 170px"
-              src="/api/image?image=new_spain/img/logotype.svg"
-              alt=""
+              src="/api/image?image=logotype.svg"
+              alt="Logo"
             />
           </a>
         </div>
@@ -138,24 +124,24 @@
             <div class="item">
               <img
                 class="img-icon"
-                src="/api/image?image=new_spain/img/Group%201.svg"
-                alt=""
+                src="/api/image?image=Group%201.svg"
+                alt="Seguro"
               />
               <span>Seguro & Fiable</span>
             </div>
             <div class="item">
               <img
                 class="img-icon"
-                src="/api/image?image=new_spain/img/Group%202.svg"
-                alt=""
+                src="/api/image?image=Group%202.svg"
+                alt="Rápidas"
               />
               <span>Retiradas Rápidas</span>
             </div>
             <div class="item">
               <img
                 class="img-icon"
-                src="/api/image?image=new_spain/img/Group%203.svg"
-                alt=""
+                src="/api/image?image=Group%203.svg"
+                alt="Bonos"
               />
               <span>Bonos Elevados</span>
             </div>
@@ -203,7 +189,7 @@
         <a href="/" class="logo">
           <img
             style="width: 170px"
-            src="/api/image?image=new_spain/img/logotype_footer.svg"
+            src="/api/image?image=logotype_footer.svg"
             alt=""
           />
         </a>
@@ -219,12 +205,10 @@
         const popupContainer = document.getElementById("popup-container");
         const closePopup = document.getElementById("close-popup");
 
-        // Show popup after 2-3 seconds
         setTimeout(() => {
           popupContainer.classList.remove("hidden");
         }, 2500);
 
-        // Close popup on button click
         closePopup.addEventListener("click", () => {
           popupContainer.classList.add("hidden");
         });
