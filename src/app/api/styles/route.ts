@@ -1,19 +1,23 @@
-import { NextResponse } from 'next/server';
+// api/styles/route.ts
+import { NextRequest, NextResponse } from 'next/server';
 import path from 'path';
 import fs from 'fs';
 
-// API роут для віддачі стилів
-export async function GET() {
-    const filePath = path.resolve('src/assets/new_spain/css/style.css'); // Шлях до стилів
+export async function GET(req: NextRequest) {
+    const file = req.nextUrl.searchParams.get('file');
+    if (!file) {
+        return new NextResponse('File parameter is missing', { status: 400 });
+    }
+    const filePath = path.resolve('src/assets/new_spain/styles', file);
 
-    // Читаємо CSS-файл
-    const cssContent = await fs.promises.readFile(filePath, 'utf8');
-
-    // Віддаємо файл як текст CSS
-    return new NextResponse(cssContent, {
-        status: 200,
-        headers: {
-            'Content-Type': 'text/css',
-        },
-    });
+    try {
+        const fileContent = await fs.promises.readFile(filePath, 'utf-8');
+        return new NextResponse(fileContent, {
+            status: 200,
+            headers: { 'Content-Type': 'text/css' },
+        });
+    } catch (err) {
+        console.error('Error reading file:', err);
+        return new NextResponse('File not found', { status: 404 });
+    }
 }

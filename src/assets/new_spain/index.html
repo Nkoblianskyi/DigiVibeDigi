@@ -11,29 +11,26 @@
     <!-- Preload critical CSS for faster rendering -->
     <link
       rel="preload"
-      href="/api/serve-file?file=assets/new_spain/css/style.css"
+      href="/api/styles?file=new_spain/css/style.css"
       as="style"
     />
     <link
       rel="preload"
-      href="/api/serve-file?file=assets/new_spain/fonts/stylesheet.css"
+      href="/api/styles?file=new_spain/fonts/stylesheet.css"
       as="style"
     />
 
     <!-- Apply styles immediately -->
     <link
-      href="/api/serve-file?file=assets/new_spain/fonts/stylesheet.css"
+      href="/api/styles?file=new_spain/fonts/stylesheet.css"
       rel="stylesheet"
     />
-    <link
-      rel="stylesheet"
-      href="/api/serve-file?file=assets/new_spain/css/style.css"
-    />
+    <link rel="stylesheet" href="/api/styles?file=new_spain/css/style.css" />
 
     <link
       rel="icon"
       type="image/png"
-      href="/api/serve-file?file=assets/new_spain/img/favicon.png"
+      href="/api/image?image=new_spain/img/favicon.png"
     />
     <title>Top Betting Online</title>
   </head>
@@ -50,7 +47,7 @@
           <div class="popup-content">
             <img
               style="width: 200px"
-              src="/api/serve-file?file=assets/new_spain/img/boomerang.svg"
+              src="/api/image?image=new_spain/img/boomerang.svg"
               alt="Vegas Logo"
               class="logo"
             />
@@ -68,27 +65,27 @@
               "
             >
               <img
-                src="/api/serve-file?file=assets/new_spain/img/star_icon.svg"
+                src="/api/image?image=new_spain/img/star_icon.svg"
                 alt=""
                 style="vertical-align: middle"
               />
               <img
-                src="/api/serve-file?file=assets/new_spain/img/star_icon.svg"
+                src="/api/image?image=new_spain/img/star_icon.svg"
                 alt=""
                 style="vertical-align: middle"
               />
               <img
-                src="/api/serve-file?file=assets/new_spain/img/star_icon.svg"
+                src="/api/image?image=new_spain/img/star_icon.svg"
                 alt=""
                 style="vertical-align: middle"
               />
               <img
-                src="/api/serve-file?file=assets/new_spain/img/star_icon.svg"
+                src="/api/image?image=new_spain/img/star_icon.svg"
                 alt=""
                 style="vertical-align: middle"
               />
               <img
-                src="/api/serve-file?file=assets/new_spain/img/star_icon.svg"
+                src="/api/image?image=new_spain/img/star_icon.svg"
                 alt=""
                 style="vertical-align: middle"
               />
@@ -106,21 +103,22 @@
               </p>
             </div>
             <br />
-            <a href="https://boomerang-bet616356.com/de/" class="play-btn"
-              >BONO COLECCIÓN</a
-            >
+            <a href="https://boomerang-bet616356.com/de/" class="play-btn">
+              BONO COLECCIÓN
+            </a>
           </div>
         </div>
       </div>
 
       <header>
         <div class="container">
-          <a href="/" class="logo"
-            ><img
+          <a href="/" class="logo">
+            <img
               style="width: 170px"
-              src="/api/serve-file?file=assets/new_spain/img/logotype.svg"
+              src="/api/image?image=new_spain/img/logotype.svg"
               alt=""
-          /></a>
+            />
+          </a>
         </div>
       </header>
 
@@ -140,7 +138,7 @@
             <div class="item">
               <img
                 class="img-icon"
-                src="/api/serve-file?file=assets/new_spain/img/Group 1.svg"
+                src="/api/image?image=new_spain/img/Group%201.svg"
                 alt=""
               />
               <span>Seguro & Fiable</span>
@@ -148,7 +146,7 @@
             <div class="item">
               <img
                 class="img-icon"
-                src="/api/serve-file?file=assets/new_spain/img/Group 2.svg"
+                src="/api/image?image=new_spain/img/Group%202.svg"
                 alt=""
               />
               <span>Retiradas Rápidas</span>
@@ -156,7 +154,7 @@
             <div class="item">
               <img
                 class="img-icon"
-                src="/api/serve-file?file=assets/new_spain/img/Group 3.svg"
+                src="/api/image?image=new_spain/img/Group%203.svg"
                 alt=""
               />
               <span>Bonos Elevados</span>
@@ -194,44 +192,21 @@
                   11 Jan 3:00 pm
                 </div>
               </div>
-              <div class="marquee-content">
-                <div class="block">
-                  <p style="font-weight: 700">West Ham vs West Ham</p>
-                  11 Jan 12:00 pm
-                </div>
-                <div class="block">
-                  <p style="font-weight: 700">Bristol City vs Wolves</p>
-                  11 Jan 12:00 pm
-                </div>
-                <div class="block">
-                  <p style="font-weight: 700">Liverpool vs Accrington</p>
-                  11 Jan 12:15 pm
-                </div>
-                <div class="block">
-                  <p style="font-weight: 700">Leicester vs QPR</p>
-                  11 Jan 3:00 pm
-                </div>
-                <div class="block">
-                  <p style="font-weight: 700">Bournemouth vs West Brom</p>
-                  11 Jan 3:00 pm
-                </div>
-              </div>
             </div>
           </div>
         </div>
-
-        <!-- Content of the Sites Section -->
       </div>
     </section>
 
     <footer>
       <div class="container">
-        <a href="/" class="logo"
-          ><img
+        <a href="/" class="logo">
+          <img
             style="width: 170px"
-            src="/api/serve-file?file=assets/new_spain/img/logotype_footer.svg"
+            src="/api/image?image=new_spain/img/logotype_footer.svg"
             alt=""
-        /></a>
+          />
+        </a>
         <div class="items">
           Important! All games presented on the sites are available only to
           persons over 18 years of age.
@@ -244,10 +219,12 @@
         const popupContainer = document.getElementById("popup-container");
         const closePopup = document.getElementById("close-popup");
 
+        // Show popup after 2-3 seconds
         setTimeout(() => {
           popupContainer.classList.remove("hidden");
         }, 2500);
 
+        // Close popup on button click
         closePopup.addEventListener("click", () => {
           popupContainer.classList.add("hidden");
         });
@@ -259,6 +236,6 @@
       integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
       crossorigin="anonymous"
     ></script>
-    <script src="/api/serve-file?file=assets/new_spain/js/site.js"></script>
+    <script src="/api/js?file=site.js"></script>
   </body>
 </html>
