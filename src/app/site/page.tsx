@@ -62,8 +62,7 @@ export default function Page() {
     ];
 
     return (
-        <html lang="es">
-            <body>
+        <>
                 <main style={{ background: '#001212', backgroundImage: 'url(/new_spain/img/pattern.png)', fontFamily: 'Roboto, sans-serif', color: '#fff' }}>
                     {showPopup && (
                         <div id="popup-container" style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100%', background: 'rgba(0,0,0,0.6)', display: 'flex', justifyContent: 'center', alignItems: 'center', zIndex: 1000 }}>
@@ -143,7 +142,6 @@ export default function Page() {
                         ))}
                     </div>
                 </main>
-            </body>
-        </html>
+        </>
     );
 }
