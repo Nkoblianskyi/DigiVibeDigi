@@ -3,7 +3,6 @@
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
-
 export default function Page() {
     const [showPopup, setShowPopup] = useState(false);
 
@@ -16,7 +15,7 @@ export default function Page() {
         {
             id: 1,
             label: '#1 MEJOR CASA DE APUESTAS',
-            logo: '/new_spain/img/boomerang.svg',
+            logo: '/api/image?file=img/boomerang.svg',
             rating: '10.0',
             votes: '14,546',
             bonus: '200€',
@@ -25,7 +24,7 @@ export default function Page() {
         {
             id: 2,
             label: '#2 SELECCIÓN DE JUGADORES',
-            logo: '/new_spain/img/billybets.png',
+            logo: '/api/image?file=img/billybets.png',
             rating: '9.9',
             votes: '13,125',
             bonus: '200€',
@@ -34,7 +33,7 @@ export default function Page() {
         {
             id: 3,
             label: '#3 TENDENCIAS',
-            logo: '/new_spain/img/mrpacho.svg',
+            logo: '/api/image?file=img/mrpacho.svg',
             rating: '9.8',
             votes: '12,767',
             bonus: '200€',
@@ -43,7 +42,7 @@ export default function Page() {
         {
             id: 4,
             label: '#4 RECOMENDADO',
-            logo: '/new_spain/img/batibet.png',
+            logo: '/api/image?file=img/batibet.png',
             rating: '9.7',
             votes: '10,325',
             bonus: '200€',
@@ -52,7 +51,7 @@ export default function Page() {
         {
             id: 5,
             label: '#5 BUENA OPCIÓN',
-            logo: '/new_spain/img/rtbet.png',
+            logo: '/api/image?file=img/rtbet.png',
             rating: '9.6',
             votes: '8,879',
             bonus: '200€',
@@ -61,7 +60,7 @@ export default function Page() {
     ];
 
     return (
-        <main style={{ background: '#001212', backgroundImage: 'url(/new_spain/img/pattern.png)', fontFamily: 'Roboto, sans-serif', color: '#fff' }}>
+        <main style={{ background: '#001212', backgroundImage: 'url(/api/image?file=img/pattern.png)', fontFamily: 'Roboto, sans-serif', color: '#fff' }}>
             {showPopup && (
                 <div id="popup-container" style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100%', background: 'rgba(0,0,0,0.6)', display: 'flex', justifyContent: 'center', alignItems: 'center', zIndex: 1000 }}>
                     <div style={{ background: '#fff', border: '2px solid #285ca7', borderRadius: '10px', maxWidth: '400px', width: '90%', textAlign: 'center', padding: '20px', position: 'relative' }}>
@@ -70,13 +69,13 @@ export default function Page() {
                             <span style={{ color: '#fff', fontWeight: 700 }}>LA MEJOR CASA DE APUESTAS</span>
                         </div>
                         <div className="popup-content">
-                            <img src="/new_spain/img/boomerang.svg" alt="Vegas Logo" style={{ width: 200, marginBottom: 15 }} />
+                            <img src="/api/image?file=img/boomerang.svg" alt="Vegas Logo" style={{ width: 200, marginBottom: 15 }} />
                             <h2 style={{ paddingBottom: 10, color: '#285ca7', fontWeight: 700 }}>
                                 <span style={{ color: '#171717' }}>BONIFICACIÓN POR NUEVO CLIENTE</span><br />100% HASTA 200€
                             </h2>
                             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '5px' }}>
                                 {[...Array(5)].map((_, i) => (
-                                    <img key={i} src="/new_spain/img/star_icon.svg" alt="star" style={{ width: 16, verticalAlign: 'middle' }} />
+                                    <img key={i} src="/api/image?file=img/star_icon.svg" alt="star" style={{ width: 16, verticalAlign: 'middle' }} />
                                 ))}
                                 <p style={{ fontWeight: 700, color: '#171717', fontSize: 24, margin: 0 }}>10.0<span style={{ fontSize: 16 }}>/10</span></p>
                             </div><br />
@@ -89,7 +88,7 @@ export default function Page() {
             <header style={{ padding: '16px 0', background: '#002222' }}>
                 <div style={{ maxWidth: 1210, margin: '0 auto', padding: '0 20px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                     <Link href="/" className="logo">
-                        <img src="/new_spain/img/logotype.svg" alt="Logo" style={{ width: 170 }} />
+                        <img src="/api/image?file=img/logotype.svg" alt="Logo" style={{ width: 170 }} />
                     </Link>
                 </div>
             </header>
@@ -104,15 +103,15 @@ export default function Page() {
                     </p>
                     <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', marginTop: 50, gap: 50 }}>
                         <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-                            <img src="/new_spain/img/Group 1.svg" alt="icon1" style={{ width: 24 }} />
+                            <img src="/api/image?file=img/Group 1.svg" alt="icon1" style={{ width: 24 }} />
                             <span style={{ fontSize: 14, fontWeight: 400 }}>Seguro & Fiable</span>
                         </div>
                         <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-                            <img src="/new_spain/img/Group 2.svg" alt="icon2" style={{ width: 24 }} />
+                            <img src="/api/image?file=img/Group 2.svg" alt="icon2" style={{ width: 24 }} />
                             <span style={{ fontSize: 14, fontWeight: 400 }}>Retiradas Rápidas</span>
                         </div>
                         <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-                            <img src="/new_spain/img/Group 3.svg" alt="icon3" style={{ width: 24 }} />
+                            <img src="/api/image?file=img/Group 3.svg" alt="icon3" style={{ width: 24 }} />
                             <span style={{ fontSize: 14, fontWeight: 400 }}>Bonos Elevados</span>
                         </div>
                     </div>
@@ -128,7 +127,7 @@ export default function Page() {
                             <div style={{ flex: 1 }}>
                                 <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
                                     {[...Array(5)].map((_, i) => (
-                                        <img key={i} src="/new_spain/img/star_icon.svg" alt="star" style={{ width: 16 }} />
+                                        <img key={i} src="/api/image?file=img/star_icon.svg" alt="star" style={{ width: 16 }} />
                                     ))}
                                     <span style={{ fontWeight: 700 }}>{card.rating}</span>
                                     <span style={{ color: '#888' }}>({card.votes})</span>

