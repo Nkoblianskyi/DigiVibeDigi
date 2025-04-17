@@ -8,7 +8,7 @@ export async function GET(req: NextRequest) {
     if (!file) {
         return new NextResponse('File parameter is missing', { status: 400 });
     }
-    const filePath = path.resolve('src/assets/new_spain/styles', file);
+    const filePath = path.resolve('src/assets/new_spain/css', file);
 
     try {
         const fileContent = await fs.promises.readFile(filePath, 'utf-8');
