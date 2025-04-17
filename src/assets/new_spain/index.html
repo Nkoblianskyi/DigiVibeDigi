@@ -12,8 +12,142 @@
     <link href="/api/fonts?file=stylesheet.css" rel="stylesheet" />
     <link rel="stylesheet" href="/api/styles?file=style.css" />
     <style>
+      body {
+        font-family: 'Inter', sans-serif;
+        margin: 0;
+        background-color: #f5f5f5;
+      }
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+      .item {
+        background-color: #fff;
+        padding: 20px;
+        margin-bottom: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+      }
+      .label-hot {
+        background: #0066cc;
+        color: #fff;
+        font-weight: bold;
+        padding: 5px 10px;
+        display: inline-block;
+        margin-bottom: 10px;
+        border-radius: 4px;
+        font-size: 14px;
+      }
+      .table {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        align-items: center;
+        gap: 10px;
+      }
+      .logo_img {
+        max-width: 140px;
+        height: auto;
+      }
+      .two {
+        font-weight: bold;
+        text-align: center;
+      }
+      .rating_pc p {
+        font-size: 20px;
+        font-weight: bold;
+        margin: 0;
+      }
+      .stars img {
+        height: 16px;
+        vertical-align: middle;
+      }
+      .votes {
+        font-size: 12px;
+        color: #666;
+        margin-top: 5px;
+      }
+      .btnactive {
+        background-color: #8dc63f;
+        color: #fff;
+        font-weight: bold;
+        text-decoration: none;
+        display: inline-block;
+        padding: 10px 20px;
+        border-radius: 4px;
+      }
+      .btn_btext {
+        font-size: 12px;
+        color: #666;
+        margin-top: 5px;
+      }
       .hidden {
         display: none;
+      }
+      .modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.6);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+      }
+      .modal .content {
+        background: white;
+        border-radius: 8px;
+        width: 90%;
+        max-width: 400px;
+        padding: 20px;
+        position: relative;
+        text-align: center;
+      }
+      .modal .close {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        border: none;
+        background: none;
+        font-size: 20px;
+        cursor: pointer;
+      }
+      .modal .title {
+        background: #0d5ab9;
+        color: #fff;
+        font-weight: 700;
+        padding: 10px;
+        border-radius: 4px 4px 0 0;
+        margin: -20px -20px 20px;
+      }
+      .modal .item img {
+        width: 150px;
+        margin: 10px auto;
+      }
+      .modal .two {
+        font-size: 18px;
+        font-weight: 600;
+        line-height: 1.5;
+      }
+      .modal .two span {
+        font-size: 24px;
+        font-weight: 700;
+        color: #0d5ab9;
+      }
+      .modal .rating_pc {
+        margin-top: 10px;
+      }
+      .modal .btn {
+        margin-top: 20px;
+        display: inline-block;
+        background: #8dc63f;
+        color: white;
+        font-weight: bold;
+        padding: 10px 20px;
+        border-radius: 5px;
+        text-decoration: none;
       }
     </style>
   </head>
