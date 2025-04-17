@@ -47,7 +47,7 @@ export async function middleware(req: NextRequest) {
         return NextResponse.rewrite(url)
     } catch (err) {
         console.error('[MIDDLEWARE] Geo check failed:', err)
-        return NextResponse.next()
+        return NextResponse.next()  // Якщо гео перевірка не вдалася, продовжуємо без змін
     }
 }
 
