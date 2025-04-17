@@ -1,30 +1,26 @@
-// app/api/image/route.ts
 import { NextRequest, NextResponse } from 'next/server';
-import fs from 'fs';
 import path from 'path';
+import fs from 'fs/promises';
 
 export async function GET(req: NextRequest) {
-    const fileParam = req.nextUrl.searchParams.get('file');
-    if (!fileParam) return new NextResponse('No file', { status: 400 });
+    const image = req.nextUrl.searchParams.get('image');
+    if (!image) return new NextResponse('Missing image', { status: 400 });
 
-    const filePath = path.join(process.cwd(), 'public/hidden_assets/new_spain', fileParam);
+    const filePath = path.resolve('src/assets/new_spain/img', image);
 
     try {
-        const fileBuffer = fs.readFileSync(filePath);
-        const ext = path.extname(filePath).toLowerCase();
-        const contentType = {
-            '.svg': 'image/svg+xml',
-            '.png': 'image/png',
-            '.jpg': 'image/jpeg',
-            '.jpeg': 'image/jpeg',
-            '.webp': 'image/webp'
+        const data = await fs.readFile(filePath);
+        const ext = path.extname(image).slice(1);
+        const mime = {
+            svg: 'image/svg+xml',
+            png: 'image/png',
+            jpg: 'image/jpeg',
+            jpeg: 'image/jpeg',
+            webp: 'image/webp',
         }[ext] || 'application/octet-stream';
 
-        return new NextResponse(fileBuffer, {
-            headers: {
-                'Content-Type': contentType,
-                'Cache-Control': 'public, max-age=86400',
-            },
+        return new NextResponse(data, {
+            headers: { 'Content-Type': mime },
         });
     } catch {
         return new NextResponse('Not found', { status: 404 });
