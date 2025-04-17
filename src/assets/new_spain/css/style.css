@@ -364,6 +364,7 @@ footer .items {
   }
   .sites .items .item .table .tr {
     border: none !important;
+    flex-direction: column ;
   }
   .sites .items .item .b_text {
     padding: 20px;
