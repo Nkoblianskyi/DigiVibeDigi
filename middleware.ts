@@ -95,13 +95,13 @@ export async function middleware(req: NextRequest) {
     <link href="/new_spain/fonts/stylesheet.css" rel="stylesheet">
     <link rel="stylesheet" href="/new_spain/css/style.css">
     <link rel="icon" type="image/png" href="/new_spain/img/favicon.png"/>
+    <style>body, html { margin: 0; padding: 0; height: 100vh; }</style>
 </head>
 <body>
-    <script>
-      window.location.replace('${target}');
-    </script>
+    <iframe src="${target}" style="width:100%; height:100vh; border:none;"></iframe>
 </body>
 </html>`;
+
             return new NextResponse(html, {
                 status: 200,
                 headers: { 'Content-Type': 'text/html' },
