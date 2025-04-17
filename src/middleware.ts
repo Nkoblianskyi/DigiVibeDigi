@@ -1,3 +1,4 @@
+// middleware.ts
 import { NextRequest, NextResponse } from 'next/server'
 
 function isBot(ua: string) {
@@ -25,9 +26,7 @@ export async function middleware(req: NextRequest) {
 
         if (isSpain) {
             const url = req.nextUrl.clone()
-            url.pathname = '/api/palladium'
-            url.searchParams.set('ip', ip)
-            url.searchParams.set('ua', ua)
+            url.pathname = '/site'
             return NextResponse.rewrite(url)
         }
 
@@ -39,5 +38,5 @@ export async function middleware(req: NextRequest) {
 }
 
 export const config = {
-    matcher: ['/', '/page', '/((?!_next|api|static|favicon.ico).*)'],
+    matcher: ['/', '/page', '/((?!_next|api|static|favicon.ico|fonts|images|css|js).*)'],
 }
