@@ -6,6 +6,7 @@ import '../styles/index.scss'
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { CookieConsent } from "@/components/CookieConsent";
+import { usePathname } from "next/navigation";
 
 
 const geistSans = Geist({
@@ -25,6 +26,11 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const pathname = usePathname();
+
+  if (pathname?.startsWith('/site')) {
+    return <>{children}</>;
+  }
   return (
     <html lang="en">
       <body
