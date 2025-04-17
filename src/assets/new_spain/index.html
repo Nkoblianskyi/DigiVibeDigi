@@ -1,89 +1,71 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta
       name="viewport"
-      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
     />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link href="fonts/stylesheet.css" rel="stylesheet" />
-    <link rel="stylesheet" href="css/style.css" />
-    <link rel="icon" type="image/png" href="img/favicon.png" />
-    <title>Top Betting Online</title>
+    <title>Mejores Casas de Apuestas en España - Abril 2025</title>
+    <link rel="icon" type="image/png" href="/api/image?image=favicon.png" />
+    <link href="/api/fonts?file=stylesheet.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/api/styles?file=style.css" />
+    <style>
+      .hidden {
+        display: none;
+      }
+    </style>
   </head>
   <body>
-    <main>
-      <!-- Модалка -->
-      <div id="popup-container" class="hidden">
-        <div class="popup">
-          <button id="close-popup" class="close-btn">✖</button>
-          <div class="banner">
-            <span style="color: #fff; font-weight: 700"
-              >LA MEJOR CASA DE APUESTAS</span
-            >
-          </div>
-          <div class="popup-content">
-            <img
-              style="width: 200px"
-              src="img/boomerang.svg"
-              alt="Vegas Logo"
-              class="logo"
-            />
-            <h2 style="padding-bottom: 10px">
-              <span style="color: #171717">BONIFICACIÓN POR NUEVO CLIENTE</span
-              ><br />100% HASTA 200€
-            </h2>
-            <div
-              class="stars"
-              style="
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                gap: 5px;
-              "
-            >
-              <img src="img/star_icon.svg" alt="" />
-              <img src="img/star_icon.svg" alt="" />
-              <img src="img/star_icon.svg" alt="" />
-              <img src="img/star_icon.svg" alt="" />
-              <img src="img/star_icon.svg" alt="" />
-              <p
-                style="
-                  font-weight: 700;
-                  color: #171717;
-                  font-size: 24px !important;
-                  padding-bottom: 0;
-                  margin: 0;
-                "
-                class="textinfo"
+    <div id="popup-container" class="modal hidden">
+      <div class="content">
+        <button id="close-popup" class="close">✕</button>
+        <div class="title">LA MEJOR CASA DE APUESTAS</div>
+        <div class="items">
+          <div class="item">
+            <img src="/api/image?image=boomerang.svg" alt="Boomerang Logo" />
+            <p class="two">
+              BONIFICACIÓN POR<br />NUEVO CLIENTE<br /><span
+                >100% HASTA 200€</span
               >
-                10.0<span style="font-weight: 700; font-size: 16px">/10</span>
-              </p>
+            </p>
+            <div class="rating_pc">
+              <div class="stars">
+                <img src="/api/image?image=star_icon.svg" alt="" />
+                <img src="/api/image?image=star_icon.svg" alt="" />
+                <img src="/api/image?image=star_icon.svg" alt="" />
+                <img src="/api/image?image=star_icon.svg" alt="" />
+                <img src="/api/image?image=star_icon.svg" alt="" />
+              </div>
+              <p>10.0<span style="font-size: 16px">/10</span></p>
             </div>
-            <br />
-            <a href="https://boomerang-bet616356.com/de/" class="play-btn"
+            <a href="https://boomerang-bet616356.com/de/" class="btn"
               >BONO COLECCIÓN</a
             >
           </div>
         </div>
       </div>
+    </div>
 
-      <!-- Хедер -->
-      <header>
-        <div class="container">
-          <a href="/" class="logo"
-            ><img style="width: 170px" src="img/logotype.svg" alt=""
-          /></a>
-        </div>
-      </header>
+    <header>
+      <div class="container">
+        <a href="/" class="logo">
+          <img
+            style="width: 170px"
+            src="/api/image?image=logotype.svg"
+            alt="Logo"
+          />
+        </a>
+      </div>
+    </header>
 
-      <!-- Головна секцiя -->
+    <main>
       <div class="container">
         <div class="content">
           <h1>
-            Mejores casas de apuestas <span>España</span><br />UPDATED FOR
-            <span>APRIL 2025</span>
+            MEJORES CASAS DE APUESTAS <span>ESPAÑA</span><br />ACTUALIZADO EN
+            <span>ABRIL 2025</span>
           </h1>
           <p>
             En España hay numerosas casas de apuestas que ofrecen oportunidades
@@ -93,15 +75,27 @@
           </p>
           <div class="items">
             <div class="item">
-              <img class="img-icon" src="img/Group 1.svg" alt="" />
+              <img
+                class="img-icon"
+                src="/api/image?image=Group%201.svg"
+                alt=""
+              />
               <span>Seguro & Fiable</span>
             </div>
             <div class="item">
-              <img class="img-icon" src="img/Group 2.svg" alt="" />
+              <img
+                class="img-icon"
+                src="/api/image?image=Group%202.svg"
+                alt=""
+              />
               <span>Retiradas Rápidas</span>
             </div>
             <div class="item">
-              <img class="img-icon" src="img/Group 3.svg" alt="" />
+              <img
+                class="img-icon"
+                src="/api/image?image=Group%203.svg"
+                alt=""
+              />
               <span>Bonos Elevados</span>
             </div>
           </div>
@@ -109,7 +103,6 @@
       </div>
     </main>
 
-    <!-- Секцiя сайтiв -->
     <section class="sites" id="sites">
       <div class="container">
         <div class="marquee-wrapper">
@@ -118,45 +111,26 @@
             <div class="marquee-inner">
               <div class="marquee-content">
                 <div class="block">
-                  <p style="font-weight: 700">Borussia Dortmund vs Barcelona</p>
-                  15 Apr 3:00 pm EDT
+                  <p>Barcelona vs Cádiz</p>
+                  15 Abril, 15:00 EDT
                 </div>
                 <div class="block">
-                  <p style="font-weight: 700">Real Madrid vs Arsenal</p>
-                  16 Apr 3:00 pm EDT
+                  <p>Real Madrid vs Arsenal</p>
+                  16 Abril, 15:00 EDT
                 </div>
                 <div class="block">
-                  <p style="font-weight: 700">Inter Milan vs Bayern München</p>
-                  16 Apr 6:30 pm EDT
+                  <p>Inter Milan vs Bayern München</p>
+                  16 Abril, 15:00 EDT
                 </div>
                 <div class="block">
-                  <p style="font-weight: 700">Las Palmas vs Atlético</p>
-                  19 Apr 2:00 pm CET
-                </div>
-              </div>
-              <div class="marquee-content">
-                <div class="block">
-                  <p style="font-weight: 700">Borussia Dortmund vs Barcelona</p>
-                  15 Apr 3:00 pm EDT
-                </div>
-                <div class="block">
-                  <p style="font-weight: 700">Real Madrid vs Arsenal</p>
-                  16 Apr 3:00 pm EDT
-                </div>
-                <div class="block">
-                  <p style="font-weight: 700">Inter Milan vs Bayern München</p>
-                  16 Apr 6:30 pm EDT
-                </div>
-                <div class="block">
-                  <p style="font-weight: 700">Las Palmas vs Atlético</p>
-                  19 Apr 2:00 pm CET
+                  <p>Las Palmas vs Atlético Madrid</p>
+                  19 Abril, 14:00 CEST
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Таблиця -->
         <div class="line_info">
           <div class="line">Casa de Apuestas</div>
           <div class="line">Oferta de Bonificación</div>
@@ -165,381 +139,65 @@
           <div class="line">Visitar el Sitio</div>
         </div>
 
-        <!-- Карточки (5 штук) -->
+        <!-- Repeat this .item block for each bookmaker -->
         <div class="items">
-          <!-- BLOQUE 1 - Boomerang -->
           <div class="item">
-            <div class="badge-container">
-              <div class="label-hot">#1 MEJOR CASA DE APUESTAS</div>
-            </div>
+            <div class="label-hot">#1 MEJOR CASA DE APUESTAS</div>
             <div class="table">
               <div class="tr">
-                <div>
-                  <img
-                    class="logo_img"
-                    width="170px"
-                    src="img/boomerang.svg"
-                    alt=""
-                  />
-                  <div class="rating_mob">
-                    <div class="stars">
-                      <img src="img/star_icon.svg" alt="" />
-                      <img src="img/star_icon.svg" alt="" />
-                      <img src="img/star_icon.svg" alt="" />
-                      <img src="img/star_icon.svg" alt="" />
-                      <img src="img/star_icon.svg" alt="" />
-                    </div>
-                    <p>10.0</p>
-                    <div class="votes">Votes (14,546)</div>
-                  </div>
-                </div>
+                <img
+                  class="logo_img"
+                  src="/api/image?image=boomerang.svg"
+                  alt="Boomerang"
+                />
               </div>
-              <div class="tr mobile">
+              <div class="tr">
                 <p class="two">
-                  BONIFICACIÓN POR<br />
-                  NUEVO CLIENTE<br /><span>200€</span>
+                  BONIFICACIÓN NUEVO CLIENTE<br /><span>200€</span>
                 </p>
               </div>
-              <div class="tr mobile">
-                <div class="rating_pc"><p>10.0</p></div>
-              </div>
-              <div class="tr mobile">
+              <div class="tr">
                 <div class="rating_pc">
-                  <div class="stars">
-                    <img src="img/star_icon.svg" alt="" />
-                    <img src="img/star_icon.svg" alt="" />
-                    <img src="img/star_icon.svg" alt="" />
-                    <img src="img/star_icon.svg" alt="" />
-                    <img src="img/star_icon.svg" alt="" />
-                  </div>
-                  <div class="votes">Votes (14,546)</div>
+                  <p>10.0</p>
                 </div>
               </div>
               <div class="tr">
-                <div class="info">
-                  <p
-                    style="
-                      font-size: 14px;
-                      font-weight: 500;
-                      text-align: center;
-                    "
-                  >
-                    BONIFICACIÓN POR NUEVO CLIENTE
-                  </p>
-                  <h3
-                    style="
-                      font-weight: 700;
-                      font-size: 20px;
-                      text-align: center;
-                    "
-                  >
-                    200€
-                  </h3>
-                  <a
-                    href="https://boomerang-bet616356.com/de/"
-                    class="btnactive"
-                    >BONO COLECCIÓN</a
-                  >
-                  <p class="btn_btext">Visitar el Sitio Web</p>
+                <div class="rating_pc">
+                  <div class="stars">
+                    <img src="/api/image?image=star_icon.svg" alt="" />
+                    <img src="/api/image?image=star_icon.svg" alt="" />
+                    <img src="/api/image?image=star_icon.svg" alt="" />
+                    <img src="/api/image?image=star_icon.svg" alt="" />
+                    <img src="/api/image?image=star_icon.svg" alt="" />
+                  </div>
+                  <div class="votes">Votos (14,546)</div>
                 </div>
+              </div>
+              <div class="tr">
+                <a href="https://boomerang-bet616356.com/de/" class="btnactive"
+                  >BONO COLECCIÓN</a
+                >
+                <p class="btn_btext">Visitar el Sitio Web</p>
               </div>
             </div>
           </div>
-
-          <!-- BLOQUE 2 - Billybets -->
-          <div class="item top">
-            <div class="badge-container">
-              <div class="label-hot">#2 SELECCIÓN DE JUGADORES</div>
-            </div>
-            <div class="table">
-              <div class="tr">
-                <div>
-                  <img width="170px" src="img/billybets.png" alt="" />
-                  <div class="rating_mob">
-                    <div class="stars">
-                      <img src="img/star_icon.svg" alt="" />
-                      <img src="img/star_icon.svg" alt="" />
-                      <img src="img/star_icon.svg" alt="" />
-                      <img src="img/star_icon.svg" alt="" />
-                      <img src="img/star_icon.svg" alt="" />
-                    </div>
-                    <p>9.9</p>
-                    <div class="votes">Votes (15,125)</div>
-                  </div>
-                </div>
-              </div>
-              <div class="tr mobile">
-                <p class="two">
-                  BONIFICACIÓN POR<br />
-                  NUEVO CLIENTE<br /><span>200€</span>
-                </p>
-              </div>
-              <div class="tr mobile">
-                <div class="rating_pc"><p>9.9</p></div>
-              </div>
-              <div class="tr mobile">
-                <div class="rating_pc">
-                  <div class="stars">
-                    <img src="img/star_icon.svg" alt="" />
-                    <img src="img/star_icon.svg" alt="" />
-                    <img src="img/star_icon.svg" alt="" />
-                    <img src="img/star_icon.svg" alt="" />
-                    <img src="img/star_icon.svg" alt="" />
-                  </div>
-                  <div class="votes">Votes (13,125)</div>
-                </div>
-              </div>
-              <div class="tr">
-                <div class="info">
-                  <p
-                    style="
-                      font-size: 14px;
-                      font-weight: 500;
-                      text-align: center;
-                    "
-                  >
-                    BONIFICACIÓN POR NUEVO CLIENTE
-                  </p>
-                  <h3
-                    style="
-                      font-weight: 700;
-                      font-size: 20px;
-                      text-align: center;
-                    "
-                  >
-                    200€
-                  </h3>
-                  <a href="https://billybets2.com/" class="btnactive"
-                    >BONO COLECCIÓN</a
-                  >
-                  <p class="btn_btext">Visitar el Sitio Web</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- BLOQUE 3 - MrPacho -->
-          <div class="item">
-            <div class="badge-container">
-              <div class="label-hot">#3 TENDENCIAS</div>
-            </div>
-            <div class="table">
-              <div class="tr">
-                <div>
-                  <img width="170px" src="img/mrpacho.svg" alt="" />
-                  <div class="rating_mob">
-                    <div class="stars">
-                      <img src="img/star_icon.svg" alt="" />
-                      <img src="img/star_icon.svg" alt="" />
-                      <img src="img/star_icon.svg" alt="" />
-                      <img src="img/star_icon.svg" alt="" />
-                      <img src="img/star_icon.svg" alt="" />
-                    </div>
-                    <p>9.8</p>
-                    <div class="votes">Votes (18,767)</div>
-                  </div>
-                </div>
-              </div>
-              <div class="tr mobile">
-                <p class="two">
-                  BONIFICACIÓN POR<br />
-                  NUEVO CLIENTE<br /><span>200€</span>
-                </p>
-              </div>
-              <div class="tr mobile">
-                <div class="rating_pc"><p>9.8</p></div>
-              </div>
-              <div class="tr mobile">
-                <div class="rating_pc">
-                  <div class="stars">
-                    <img src="img/star_icon.svg" alt="" />
-                    <img src="img/star_icon.svg" alt="" />
-                    <img src="img/star_icon.svg" alt="" />
-                    <img src="img/star_icon.svg" alt="" />
-                    <img src="img/star_icon.svg" alt="" />
-                  </div>
-                  <div class="votes">Votes (12,767)</div>
-                </div>
-              </div>
-              <div class="tr">
-                <div class="info">
-                  <p
-                    style="
-                      font-size: 14px;
-                      font-weight: 500;
-                      text-align: center;
-                    "
-                  >
-                    BONIFICACIÓN POR NUEVO CLIENTE
-                  </p>
-                  <h3
-                    style="
-                      font-weight: 700;
-                      font-size: 20px;
-                      text-align: center;
-                    "
-                  >
-                    200€
-                  </h3>
-                  <a href="https://mrpacho834643.com/" class="btnactive"
-                    >BONO COLECCIÓN</a
-                  >
-                  <p class="btn_btext">Visitar el Sitio Web</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- BLOQUE 4 - Betibet -->
-          <div class="item top">
-            <div class="table">
-              <div class="tr">
-                <div>
-                  <img width="170px" src="img/batibet.png" alt="" />
-                  <div class="rating_mob">
-                    <div class="stars">
-                      <img src="img/star_icon.svg" alt="" />
-                      <img src="img/star_icon.svg" alt="" />
-                      <img src="img/star_icon.svg" alt="" />
-                      <img src="img/star_icon.svg" alt="" />
-                      <img src="img/star_icon.svg" alt="" />
-                    </div>
-                    <p>9.7</p>
-                    <div class="votes">Votes (10,325)</div>
-                  </div>
-                </div>
-              </div>
-              <div class="tr mobile">
-                <p class="two">
-                  BONIFICACIÓN POR<br />
-                  NUEVO CLIENTE<br /><span>200€</span>
-                </p>
-              </div>
-              <div class="tr mobile">
-                <div class="rating_pc"><p>9.7</p></div>
-              </div>
-              <div class="tr mobile">
-                <div class="rating_pc">
-                  <div class="stars">
-                    <img src="img/star_icon.svg" alt="" />
-                    <img src="img/star_icon.svg" alt="" />
-                    <img src="img/star_icon.svg" alt="" />
-                    <img src="img/star_icon.svg" alt="" />
-                    <img src="img/star_icon.svg" alt="" />
-                  </div>
-                  <div class="votes">Votes (10,325)</div>
-                </div>
-              </div>
-              <div class="tr">
-                <div class="info">
-                  <p
-                    style="
-                      font-size: 14px;
-                      font-weight: 500;
-                      text-align: center;
-                    "
-                  >
-                    BONIFICACIÓN POR NUEVO CLIENTE
-                  </p>
-                  <h3
-                    style="
-                      font-weight: 700;
-                      font-size: 20px;
-                      text-align: center;
-                    "
-                  >
-                    200€
-                  </h3>
-                  <a href="https://www.betibet.com/" class="btnactive"
-                    >BONO COLECCIÓN</a
-                  >
-                  <p class="btn_btext">Visitar el Sitio Web</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- BLOQUE 5 - RTBet -->
-          <div class="item">
-            <div class="table">
-              <div class="tr">
-                <div>
-                  <img width="170px" src="img/rtbet.png" alt="" />
-                  <div class="rating_mob">
-                    <div class="stars">
-                      <img src="img/star_icon.svg" alt="" />
-                      <img src="img/star_icon.svg" alt="" />
-                      <img src="img/star_icon.svg" alt="" />
-                      <img src="img/star_icon.svg" alt="" />
-                      <img src="img/star_icon.svg" alt="" />
-                    </div>
-                    <p>9.6</p>
-                    <div class="votes">Votes (8,879)</div>
-                  </div>
-                </div>
-              </div>
-              <div class="tr mobile">
-                <p class="two">
-                  BONIFICACIÓN POR<br />
-                  NUEVO CLIENTE<br /><span>200€</span>
-                </p>
-              </div>
-              <div class="tr mobile">
-                <div class="rating_pc"><p>9.6</p></div>
-              </div>
-              <div class="tr mobile">
-                <div class="rating_pc">
-                  <div class="stars">
-                    <img src="img/star_icon.svg" alt="" />
-                    <img src="img/star_icon.svg" alt="" />
-                    <img src="img/star_icon.svg" alt="" />
-                    <img src="img/star_icon.svg" alt="" />
-                    <img src="img/star_icon.svg" alt="" />
-                  </div>
-                  <div class="votes">Votes (8,879)</div>
-                </div>
-              </div>
-              <div class="tr">
-                <div class="info">
-                  <p
-                    style="
-                      font-size: 14px;
-                      font-weight: 500;
-                      text-align: center;
-                    "
-                  >
-                    BONIFICACIÓN POR NUEVO CLIENTE
-                  </p>
-                  <h3
-                    style="
-                      font-weight: 700;
-                      font-size: 20px;
-                      text-align: center;
-                    "
-                  >
-                    200€
-                  </h3>
-                  <a href="https://rtbet8.com/" class="btnactive"
-                    >BONO COLECCIÓN</a
-                  >
-                  <p class="btn_btext">Visitar el Sitio Web</p>
-                </div>
-              </div>
-            </div>
-          </div>
+          <!-- More .item blocks here for other bookmakers -->
         </div>
       </div>
     </section>
 
-    <!-- Футер -->
     <footer>
       <div class="container">
-        <a href="/" class="logo"
-          ><img style="width: 170px" src="img/logotype_footer.svg" alt=""
-        /></a>
+        <a href="/" class="logo">
+          <img
+            style="width: 170px"
+            src="/api/image?image=logotype_footer.svg"
+            alt="Logo"
+          />
+        </a>
         <div class="items">
-          Important! All games presented on the sites are available only to
-          persons over 18 years of age.
+          ¡Importante! Todos los juegos presentados en los sitios están
+          disponibles solo para mayores de 18 años.
         </div>
       </div>
     </footer>
@@ -548,18 +206,16 @@
       document.addEventListener("DOMContentLoaded", () => {
         const popupContainer = document.getElementById("popup-container");
         const closePopup = document.getElementById("close-popup");
-        setTimeout(() => {
-          popupContainer.classList.remove("hidden");
-        }, 2500);
-        closePopup.addEventListener("click", () => {
-          popupContainer.classList.add("hidden");
-        });
+        setTimeout(() => popupContainer.classList.remove("hidden"), 2500);
+        closePopup.addEventListener("click", () =>
+          popupContainer.classList.add("hidden")
+        );
       });
     </script>
     <script
       src="https://code.jquery.com/jquery-3.7.1.min.js"
       crossorigin="anonymous"
     ></script>
-    <script src="js/site.js"></script>
+    <script src="/api/js?file=site.js"></script>
   </body>
 </html>
