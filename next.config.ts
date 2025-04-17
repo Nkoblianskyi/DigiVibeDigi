@@ -4,7 +4,6 @@ const nextConfig: NextConfig = {
     images: {
         unoptimized: true,  
     },
-    appDir: true
 };
 
 export default nextConfig;
