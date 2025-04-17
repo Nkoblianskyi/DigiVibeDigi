@@ -19,102 +19,88 @@
         position: fixed;
         top: 0;
         left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.7);
-        backdrop-filter: blur(5px);
-        z-index: 999;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.6);
         display: flex;
         justify-content: center;
         align-items: center;
-      }
-      .modal .title {
-        font-size: 18px;
-        font-weight: 600;
-        text-transform: uppercase;
-        text-align: center;
+        z-index: 1000;
       }
       .modal .content {
-        position: relative;
-        max-width: 600px;
+        background: #fff;
+        border-radius: 10px;
         width: 100%;
+        max-width: 460px;
+        position: relative;
+        text-align: center;
+        overflow: hidden;
       }
-      .modal .content .close {
+      .modal .close {
         position: absolute;
-        top: -50px;
-        right: 0;
+        top: 15px;
+        right: 15px;
+        border: none;
+        background: none;
+        font-size: 24px;
+        color: #fff;
         cursor: pointer;
+        z-index: 10;
+      }
+      .modal .title {
+        background: #1e57a6;
+        color: #fff;
+        font-weight: 700;
+        padding: 16px;
+        font-size: 18px;
+        text-align: center;
       }
       .modal .items {
-        display: grid;
-        grid-template-columns: 250px 250px;
-        justify-content: center;
-        gap: 25px;
-        margin-top: 30px;
+        background: #fff;
+        padding: 30px 20px 20px;
       }
-      .modal .items .item {
-        border-radius: 15px;
-        background: #033131;
-        padding: 21px 0;
-        position: relative;
-        text-align: center;
+      .modal .item img {
+        width: 180px;
+        margin: 15px auto;
       }
-      .modal .items .item img {
-        max-width: 150px;
-        margin-bottom: 20px;
-      }
-      .modal .items .item .table {
-        display: grid;
-        grid-template-columns: 25% 25% 25% 25%;
-      }
-      .modal .items .item .table .tr {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 100px;
-        border-right: 1px solid rgba(255, 255, 255, 0.1);
-      }
-      .modal .items .item .table .tr:last-child {
-        border-right: none;
-      }
-      .modal .items .item .b_text {
-        text-align: center;
-        font-size: 12px;
-        font-weight: 400;
-        max-width: 800px;
-        padding: 0 10px;
-        margin: 21px auto 0;
-      }
-      .modal .items .item .two {
-        font-size: 16px;
-        font-style: normal;
-        font-weight: 400;
-        text-align: center;
-      }
-      .modal .items .item .two span {
-        color: #69fe00;
-        font-size: 36px;
-        font-weight: 700;
-      }
-      .modal .items .item .btn {
-        width: 170px;
-        height: 50px;
-        border-radius: 5px;
-        background: #69fe00;
-        box-shadow: 0px 5px 40px 0px rgba(105, 254, 0, 0.5);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        color: #001212;
+      .modal .two {
         font-size: 18px;
-        font-weight: 600;
-        margin: 25px auto 0;
+        font-weight: 500;
+        line-height: 1.4;
+        color: #333;
+        margin-bottom: 12px;
       }
-      .modal .items .item .btn_btext {
-        margin-top: 14px;
-        text-align: center;
-        font-size: 12px;
-        font-weight: 400;
+      .modal .two span {
+        display: block;
+        font-size: 24px;
+        font-weight: 700;
+        color: #1e57a6;
+        margin-top: 8px;
+      }
+      .modal .stars {
+        display: flex;
+        justify-content: center;
+        margin: 12px 0 6px;
+      }
+      .modal .stars img {
+        height: 22px;
+        margin: 0 3px;
+      }
+      .modal .rating_pc {
+        font-size: 16px;
+        font-weight: bold;
+        color: #222;
+      }
+      .modal .btn {
+        display: inline-block;
+        background: #8dc63f;
+        color: white;
+        font-weight: bold;
+        padding: 14px 30px;
+        border-radius: 8px;
+        font-size: 16px;
+        text-decoration: none;
+        margin-top: 20px;
       }
     </style>
   </head>
