@@ -6,7 +6,6 @@ import '../styles/index.scss'
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { CookieConsent } from "@/components/CookieConsent";
-import { usePathname } from "next/navigation";
 
 
 const geistSans = Geist({
@@ -20,23 +19,22 @@ const geistMono = Geist_Mono({
 });
 
 
-
 export default function RootLayout({
   children,
-}: Readonly<{
+  params,
+}: {
   children: React.ReactNode;
-}>) {
-  const pathname = usePathname();
-
-  if (pathname?.startsWith('/site')) {
-    return <>{children}</>;
+  params: { segment: string };
+}) {
+  if (params.segment === 'site') {
+    return <html lang="es"><body>{children}</body></html>; // БЕЗ Layout
   }
+
   return (
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-
         <Header />
         {children}
         <CookieConsent />
