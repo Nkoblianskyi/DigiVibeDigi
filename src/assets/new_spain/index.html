@@ -19,87 +19,102 @@
         position: fixed;
         top: 0;
         left: 0;
-        right: 0;
-        bottom: 0;
-        background: rgba(0, 0, 0, 0.6);
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.7);
+        backdrop-filter: blur(5px);
+        z-index: 999;
         display: flex;
         justify-content: center;
         align-items: center;
-        z-index: 1000;
-      }
-      .modal .content {
-        background: #fff;
-        border-radius: 8px;
-        width: 100%;
-        max-width: 460px;
-        position: relative;
-        text-align: center;
-        padding: 0 0 30px;
-        overflow: hidden;
-      }
-      .modal .close {
-        position: absolute;
-        top: 15px;
-        right: 15px;
-        border: none;
-        background: none;
-        font-size: 22px;
-        color: #fff;
-        cursor: pointer;
-        z-index: 10;
       }
       .modal .title {
-        background: #1757a6;
-        color: #fff;
-        font-weight: 700;
-        padding: 15px;
-        font-size: 18px;
-      }
-      .modal .items {
-        background: #fff;
-        padding: 30px 20px 20px;
-      }
-      .modal .item img {
-        width: 180px;
-        margin: 10px auto;
-      }
-      .modal .two {
         font-size: 18px;
         font-weight: 600;
-        line-height: 1.5;
-        color: #222;
-        margin-bottom: 10px;
+        text-transform: uppercase;
+        text-align: center;
       }
-      .modal .two span {
-        display: block;
-        font-size: 22px;
+      .modal .content {
+        position: relative;
+        max-width: 600px;
+        width: 100%;
+      }
+      .modal .content .close {
+        position: absolute;
+        top: -50px;
+        right: 0;
+        cursor: pointer;
+      }
+      .modal .items {
+        display: grid;
+        grid-template-columns: 250px 250px;
+        justify-content: center;
+        gap: 25px;
+        margin-top: 30px;
+      }
+      .modal .items .item {
+        border-radius: 15px;
+        background: #033131;
+        padding: 21px 0;
+        position: relative;
+        text-align: center;
+      }
+      .modal .items .item img {
+        max-width: 150px;
+        margin-bottom: 20px;
+      }
+      .modal .items .item .table {
+        display: grid;
+        grid-template-columns: 25% 25% 25% 25%;
+      }
+      .modal .items .item .table .tr {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100px;
+        border-right: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      .modal .items .item .table .tr:last-child {
+        border-right: none;
+      }
+      .modal .items .item .b_text {
+        text-align: center;
+        font-size: 12px;
+        font-weight: 400;
+        max-width: 800px;
+        padding: 0 10px;
+        margin: 21px auto 0;
+      }
+      .modal .items .item .two {
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        text-align: center;
+      }
+      .modal .items .item .two span {
+        color: #69fe00;
+        font-size: 36px;
         font-weight: 700;
-        color: #1757a6;
-        margin-top: 5px;
       }
-      .modal .stars {
+      .modal .items .item .btn {
+        width: 170px;
+        height: 50px;
+        border-radius: 5px;
+        background: #69fe00;
+        box-shadow: 0px 5px 40px 0px rgba(105, 254, 0, 0.5);
         display: flex;
         justify-content: center;
-        margin: 10px 0;
+        align-items: center;
+        color: #001212;
+        font-size: 18px;
+        font-weight: 600;
+        margin: 25px auto 0;
       }
-      .modal .stars img {
-        height: 20px;
-        margin: 0 2px;
-      }
-      .modal .rating_pc {
-        font-size: 16px;
-        font-weight: bold;
-      }
-      .modal .btn {
-        display: inline-block;
-        background: #8dc63f;
-        color: white;
-        font-weight: bold;
-        padding: 12px 25px;
-        border-radius: 8px;
-        font-size: 15px;
-        text-decoration: none;
-        margin-top: 20px;
+      .modal .items .item .btn_btext {
+        margin-top: 14px;
+        text-align: center;
+        font-size: 12px;
+        font-weight: 400;
       }
     </style>
   </head>
@@ -112,7 +127,9 @@
           <div class="item">
             <img src="/api/image?image=boomerang.svg" alt="Boomerang Logo" />
             <p class="two">
-              BONIFICACIÓN POR<br />NUEVO CLIENTE<br /><span>100% HASTA 200€</span>
+              BONIFICACIÓN POR<br />NUEVO CLIENTE<br /><span
+                >100% HASTA 200€</span
+              >
             </p>
             <div class="rating_pc">
               <div class="stars">
@@ -124,7 +141,9 @@
               </div>
               <p>10.0<span style="font-size: 16px">/10</span></p>
             </div>
-            <a href="https://boomerang-bet616356.com/de/" class="btn">BONO COLECCIÓN</a>
+            <a href="https://boomerang-bet616356.com/de/" class="btn"
+              >BONO COLECCIÓN</a
+            >
           </div>
         </div>
       </div>
@@ -133,7 +152,11 @@
     <header>
       <div class="container">
         <a href="/" class="logo">
-          <img style="width: 170px" src="/api/image?image=logotype.svg" alt="Logo" />
+          <img
+            style="width: 170px"
+            src="/api/image?image=logotype.svg"
+            alt="Logo"
+          />
         </a>
       </div>
     </header>
@@ -153,15 +176,27 @@
           </p>
           <div class="items">
             <div class="item">
-              <img class="img-icon" src="/api/image?image=Group%201.svg" alt="" />
+              <img
+                class="img-icon"
+                src="/api/image?image=Group%201.svg"
+                alt=""
+              />
               <span>Seguro & Fiable</span>
             </div>
             <div class="item">
-              <img class="img-icon" src="/api/image?image=Group%202.svg" alt="" />
+              <img
+                class="img-icon"
+                src="/api/image?image=Group%202.svg"
+                alt=""
+              />
               <span>Retiradas Rápidas</span>
             </div>
             <div class="item">
-              <img class="img-icon" src="/api/image?image=Group%203.svg" alt="" />
+              <img
+                class="img-icon"
+                src="/api/image?image=Group%203.svg"
+                alt=""
+              />
               <span>Bonos Elevados</span>
             </div>
           </div>
@@ -210,9 +245,21 @@
           <div class="item">
             <div class="label-hot">#1 MEJOR CASA DE APUESTAS</div>
             <div class="table">
-              <div class="tr"><img class="logo_img" src="/api/image?image=boomerang.svg" alt="Boomerang" /></div>
-              <div class="tr"><p class="two">BONIFICACIÓN NUEVO CLIENTE<br /><span>200€</span></p></div>
-              <div class="tr"><div class="rating_pc"><p>10.0</p></div></div>
+              <div class="tr">
+                <img
+                  class="logo_img"
+                  src="/api/image?image=boomerang.svg"
+                  alt="Boomerang"
+                />
+              </div>
+              <div class="tr">
+                <p class="two">
+                  BONIFICACIÓN NUEVO CLIENTE<br /><span>200€</span>
+                </p>
+              </div>
+              <div class="tr">
+                <div class="rating_pc"><p>10.0</p></div>
+              </div>
               <div class="tr">
                 <div class="rating_pc">
                   <div class="stars">
@@ -226,7 +273,9 @@
                 </div>
               </div>
               <div class="tr">
-                <a href="https://boomerang-bet616356.com/de/" class="btnactive">BONO COLECCIÓN</a>
+                <a href="https://boomerang-bet616356.com/de/" class="btnactive"
+                  >BONO COLECCIÓN</a
+                >
                 <p class="btn_btext">Visitar el Sitio Web</p>
               </div>
             </div>
@@ -235,9 +284,21 @@
           <div class="item">
             <div class="label-hot">#2 SELECCIÓN DE JUGADORES</div>
             <div class="table">
-              <div class="tr"><img class="logo_img" src="/api/image?image=billybets.png" alt="BillyBets" /></div>
-              <div class="tr"><p class="two">BONIFICACIÓN NUEVO CLIENTE<br /><span>200€</span></p></div>
-              <div class="tr"><div class="rating_pc"><p>9.9</p></div></div>
+              <div class="tr">
+                <img
+                  class="logo_img"
+                  src="/api/image?image=billybets.png"
+                  alt="BillyBets"
+                />
+              </div>
+              <div class="tr">
+                <p class="two">
+                  BONIFICACIÓN NUEVO CLIENTE<br /><span>200€</span>
+                </p>
+              </div>
+              <div class="tr">
+                <div class="rating_pc"><p>9.9</p></div>
+              </div>
               <div class="tr">
                 <div class="rating_pc">
                   <div class="stars">
@@ -251,7 +312,9 @@
                 </div>
               </div>
               <div class="tr">
-                <a href="https://billybets2.com/" class="btnactive">BONO COLECCIÓN</a>
+                <a href="https://billybets2.com/" class="btnactive"
+                  >BONO COLECCIÓN</a
+                >
                 <p class="btn_btext">Visitar el Sitio Web</p>
               </div>
             </div>
@@ -260,9 +323,21 @@
           <div class="item">
             <div class="label-hot">#3 TENDENCIAS</div>
             <div class="table">
-              <div class="tr"><img class="logo_img" src="/api/image?image=mrpacho.svg" alt="MrPacho" /></div>
-              <div class="tr"><p class="two">BONIFICACIÓN NUEVO CLIENTE<br /><span>200€</span></p></div>
-              <div class="tr"><div class="rating_pc"><p>9.8</p></div></div>
+              <div class="tr">
+                <img
+                  class="logo_img"
+                  src="/api/image?image=mrpacho.svg"
+                  alt="MrPacho"
+                />
+              </div>
+              <div class="tr">
+                <p class="two">
+                  BONIFICACIÓN NUEVO CLIENTE<br /><span>200€</span>
+                </p>
+              </div>
+              <div class="tr">
+                <div class="rating_pc"><p>9.8</p></div>
+              </div>
               <div class="tr">
                 <div class="rating_pc">
                   <div class="stars">
@@ -276,7 +351,9 @@
                 </div>
               </div>
               <div class="tr">
-                <a href="https://mrpacho834643.com/" class="btnactive">BONO COLECCIÓN</a>
+                <a href="https://mrpacho834643.com/" class="btnactive"
+                  >BONO COLECCIÓN</a
+                >
                 <p class="btn_btext">Visitar el Sitio Web</p>
               </div>
             </div>
@@ -284,9 +361,21 @@
 
           <div class="item">
             <div class="table">
-              <div class="tr"><img class="logo_img" src="/api/image?image=batibet.png" alt="BetiBet" /></div>
-              <div class="tr"><p class="two">BONIFICACIÓN NUEVO CLIENTE<br /><span>200€</span></p></div>
-              <div class="tr"><div class="rating_pc"><p>9.7</p></div></div>
+              <div class="tr">
+                <img
+                  class="logo_img"
+                  src="/api/image?image=batibet.png"
+                  alt="BetiBet"
+                />
+              </div>
+              <div class="tr">
+                <p class="two">
+                  BONIFICACIÓN NUEVO CLIENTE<br /><span>200€</span>
+                </p>
+              </div>
+              <div class="tr">
+                <div class="rating_pc"><p>9.7</p></div>
+              </div>
               <div class="tr">
                 <div class="rating_pc">
                   <div class="stars">
@@ -300,7 +389,9 @@
                 </div>
               </div>
               <div class="tr">
-                <a href="https://www.betibet.com/" class="btnactive">BONO COLECCIÓN</a>
+                <a href="https://www.betibet.com/" class="btnactive"
+                  >BONO COLECCIÓN</a
+                >
                 <p class="btn_btext">Visitar el Sitio Web</p>
               </div>
             </div>
@@ -308,9 +399,21 @@
 
           <div class="item">
             <div class="table">
-              <div class="tr"><img class="logo_img" src="/api/image?image=rtbet.png" alt="RTBet" /></div>
-              <div class="tr"><p class="two">BONIFICACIÓN NUEVO CLIENTE<br /><span>200€</span></p></div>
-              <div class="tr"><div class="rating_pc"><p>9.6</p></div></div>
+              <div class="tr">
+                <img
+                  class="logo_img"
+                  src="/api/image?image=rtbet.png"
+                  alt="RTBet"
+                />
+              </div>
+              <div class="tr">
+                <p class="two">
+                  BONIFICACIÓN NUEVO CLIENTE<br /><span>200€</span>
+                </p>
+              </div>
+              <div class="tr">
+                <div class="rating_pc"><p>9.6</p></div>
+              </div>
               <div class="tr">
                 <div class="rating_pc">
                   <div class="stars">
@@ -324,12 +427,13 @@
                 </div>
               </div>
               <div class="tr">
-                <a href="https://rtbet8.com/" class="btnactive">BONO COLECCIÓN</a>
+                <a href="https://rtbet8.com/" class="btnactive"
+                  >BONO COLECCIÓN</a
+                >
                 <p class="btn_btext">Visitar el Sitio Web</p>
               </div>
             </div>
           </div>
-
         </div>
       </div>
     </section>
@@ -337,10 +441,15 @@
     <footer>
       <div class="container">
         <a href="/" class="logo">
-          <img style="width: 170px" src="/api/image?image=logotype_footer.svg" alt="Logo" />
+          <img
+            style="width: 170px"
+            src="/api/image?image=logotype_footer.svg"
+            alt="Logo"
+          />
         </a>
         <div class="items">
-          ¡Importante! Todos los juegos presentados en los sitios están disponibles solo para mayores de 18 años.
+          ¡Importante! Todos los juegos presentados en los sitios están
+          disponibles solo para mayores de 18 años.
         </div>
       </div>
     </footer>
@@ -355,7 +464,10 @@
         );
       });
     </script>
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js" crossorigin="anonymous"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+      crossorigin="anonymous"
+    ></script>
     <script src="/api/js?file=site.js"></script>
   </body>
 </html>
