@@ -12,75 +12,6 @@
     <link href="/api/fonts?file=stylesheet.css" rel="stylesheet" />
     <link rel="stylesheet" href="/api/styles?file=style.css" />
     <style>
-      body {
-        font-family: 'Inter', sans-serif;
-        margin: 0;
-        background-color: #f5f5f5;
-      }
-      .container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 20px;
-      }
-      .item {
-        background-color: #fff;
-        padding: 20px;
-        margin-bottom: 20px;
-        border-radius: 10px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
-      }
-      .label-hot {
-        background: #0066cc;
-        color: #fff;
-        font-weight: bold;
-        padding: 5px 10px;
-        display: inline-block;
-        margin-bottom: 10px;
-        border-radius: 4px;
-        font-size: 14px;
-      }
-      .table {
-        display: grid;
-        grid-template-columns: repeat(5, 1fr);
-        align-items: center;
-        gap: 10px;
-      }
-      .logo_img {
-        max-width: 140px;
-        height: auto;
-      }
-      .two {
-        font-weight: bold;
-        text-align: center;
-      }
-      .rating_pc p {
-        font-size: 20px;
-        font-weight: bold;
-        margin: 0;
-      }
-      .stars img {
-        height: 16px;
-        vertical-align: middle;
-      }
-      .votes {
-        font-size: 12px;
-        color: #666;
-        margin-top: 5px;
-      }
-      .btnactive {
-        background-color: #8dc63f;
-        color: #fff;
-        font-weight: bold;
-        text-decoration: none;
-        display: inline-block;
-        padding: 10px 20px;
-        border-radius: 4px;
-      }
-      .btn_btext {
-        font-size: 12px;
-        color: #666;
-        margin-top: 5px;
-      }
       .hidden {
         display: none;
       }
@@ -97,57 +28,78 @@
         z-index: 1000;
       }
       .modal .content {
-        background: white;
+        background: #fff;
         border-radius: 8px;
-        width: 90%;
-        max-width: 400px;
-        padding: 20px;
+        width: 100%;
+        max-width: 460px;
         position: relative;
         text-align: center;
+        padding: 0 0 30px;
+        overflow: hidden;
       }
       .modal .close {
         position: absolute;
-        top: 10px;
-        right: 10px;
+        top: 15px;
+        right: 15px;
         border: none;
         background: none;
-        font-size: 20px;
+        font-size: 22px;
+        color: #fff;
         cursor: pointer;
+        z-index: 10;
       }
       .modal .title {
-        background: #0d5ab9;
+        background: #1757a6;
         color: #fff;
         font-weight: 700;
-        padding: 10px;
-        border-radius: 4px 4px 0 0;
-        margin: -20px -20px 20px;
+        padding: 15px;
+        font-size: 18px;
+      }
+      .modal .items {
+        background: #fff;
+        padding: 30px 20px 20px;
       }
       .modal .item img {
-        width: 150px;
+        width: 180px;
         margin: 10px auto;
       }
       .modal .two {
         font-size: 18px;
         font-weight: 600;
         line-height: 1.5;
+        color: #222;
+        margin-bottom: 10px;
       }
       .modal .two span {
-        font-size: 24px;
+        display: block;
+        font-size: 22px;
         font-weight: 700;
-        color: #0d5ab9;
+        color: #1757a6;
+        margin-top: 5px;
+      }
+      .modal .stars {
+        display: flex;
+        justify-content: center;
+        margin: 10px 0;
+      }
+      .modal .stars img {
+        height: 20px;
+        margin: 0 2px;
       }
       .modal .rating_pc {
-        margin-top: 10px;
+        font-size: 16px;
+        font-weight: bold;
       }
       .modal .btn {
-        margin-top: 20px;
         display: inline-block;
         background: #8dc63f;
         color: white;
         font-weight: bold;
-        padding: 10px 20px;
-        border-radius: 5px;
+        padding: 12px 25px;
+        border-radius: 8px;
+        font-size: 15px;
         text-decoration: none;
+        margin-top: 20px;
       }
     </style>
   </head>
