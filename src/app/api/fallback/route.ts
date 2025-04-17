@@ -4,8 +4,8 @@ import fs from 'fs';
 
 export async function GET() {
     try {
-        // Шлях до резервного HTML файлу
-        const filePath = path.resolve('src/assets/new_spain/index.html');
+
+        const filePath = path.resolve('app/site/page.tsx');
         const html = await fs.promises.readFile(filePath, 'utf8');
 
         console.log('[PALLADIUM] Fallback: serving static HTML');

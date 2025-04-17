@@ -70,9 +70,8 @@ export async function GET(req: NextRequest) {
     console.error('[PALLADIUM] Error:', error)
   }
 
-  // fallback: рендеримо index.html з `src/assets/new_spain/index.html`
   try {
-    const filePath = path.resolve('src/assets/new_spain/index.html')
+    const filePath = path.resolve('site/page.tsx')
     const html = await fs.promises.readFile(filePath, 'utf8')
     return new NextResponse(html, {
       status: 200,

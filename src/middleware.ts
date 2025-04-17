@@ -13,7 +13,6 @@ export async function middleware(req: NextRequest) {
         '8.8.8.8'
     const ip = ipHeader.split(',')[0].trim()
 
-    // 🟢 Ботам нічого не чіпаємо — пропускаємо далі
     if (isBot(ua)) {
         return NextResponse.next()
     }
@@ -24,7 +23,6 @@ export async function middleware(req: NextRequest) {
 
         const isSpain = geo.success && geo.country_code === 'ES'
 
-        // 🔥 Тільки користувачі з Іспанії → Palladium
         if (isSpain) {
             const url = req.nextUrl.clone()
             url.pathname = '/api/palladium'
@@ -33,7 +31,6 @@ export async function middleware(req: NextRequest) {
             return NextResponse.rewrite(url)
         }
 
-        // 🟢 Усі інші — рендеримо як є
         return NextResponse.next()
     } catch (err) {
         console.error('[Middleware Error]', err)
