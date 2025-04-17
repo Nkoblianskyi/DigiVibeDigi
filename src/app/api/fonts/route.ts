@@ -4,8 +4,7 @@ import fs from 'fs';
 
 // API роут для віддачі шрифтів
 export async function GET() {
-    // Вказуємо шлях до файлу шрифтів в src/assets
-    const filePath = path.resolve('src/assets/new_spain/fonts/stylesheet.css');
+    const filePath = path.resolve('src/assets/new_spain/fonts/stylesheet.css'); // Шлях до шрифтів
 
     // Читаємо CSS-файл для шрифтів
     const fontCssContent = await fs.promises.readFile(filePath, 'utf8');

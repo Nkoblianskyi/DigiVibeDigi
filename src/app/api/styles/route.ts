@@ -4,8 +4,7 @@ import fs from 'fs';
 
 // API роут для віддачі стилів
 export async function GET() {
-    // Вказуємо шлях до CSS-файлу в src/assets
-    const filePath = path.resolve('src/assets/new_spain/css/style.css');
+    const filePath = path.resolve('src/assets/new_spain/css/style.css'); // Шлях до стилів
 
     // Читаємо CSS-файл
     const cssContent = await fs.promises.readFile(filePath, 'utf8');
