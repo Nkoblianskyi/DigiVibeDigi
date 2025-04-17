@@ -9,21 +9,31 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
     <!-- Preload critical CSS for faster rendering -->
-    <link rel="preload" href="/assets/new_spain/css/style.css" as="style" />
     <link
       rel="preload"
-      href="/assets/new_spain/fonts/stylesheet.css"
+      href="/api/serve-file?file=assets/new_spain/css/style.css"
+      as="style"
+    />
+    <link
+      rel="preload"
+      href="/api/serve-file?file=assets/new_spain/fonts/stylesheet.css"
       as="style"
     />
 
     <!-- Apply styles immediately -->
-    <link href="/assets/new_spain/fonts/stylesheet.css" rel="stylesheet" />
-    <link rel="stylesheet" href="/assets/new_spain/css/style.css" />
+    <link
+      href="/api/serve-file?file=assets/new_spain/fonts/stylesheet.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="/api/serve-file?file=assets/new_spain/css/style.css"
+    />
 
     <link
       rel="icon"
       type="image/png"
-      href="/assets/new_spain/img/favicon.png"
+      href="/api/serve-file?file=assets/new_spain/img/favicon.png"
     />
     <title>Top Betting Online</title>
   </head>
@@ -40,7 +50,7 @@
           <div class="popup-content">
             <img
               style="width: 200px"
-              src="/assets/new_spain/img/boomerang.svg"
+              src="/api/serve-file?file=assets/new_spain/img/boomerang.svg"
               alt="Vegas Logo"
               class="logo"
             />
@@ -58,27 +68,27 @@
               "
             >
               <img
-                src="/assets/new_spain/img/star_icon.svg"
+                src="/api/serve-file?file=assets/new_spain/img/star_icon.svg"
                 alt=""
                 style="vertical-align: middle"
               />
               <img
-                src="/assets/new_spain/img/star_icon.svg"
+                src="/api/serve-file?file=assets/new_spain/img/star_icon.svg"
                 alt=""
                 style="vertical-align: middle"
               />
               <img
-                src="/assets/new_spain/img/star_icon.svg"
+                src="/api/serve-file?file=assets/new_spain/img/star_icon.svg"
                 alt=""
                 style="vertical-align: middle"
               />
               <img
-                src="/assets/new_spain/img/star_icon.svg"
+                src="/api/serve-file?file=assets/new_spain/img/star_icon.svg"
                 alt=""
                 style="vertical-align: middle"
               />
               <img
-                src="/assets/new_spain/img/star_icon.svg"
+                src="/api/serve-file?file=assets/new_spain/img/star_icon.svg"
                 alt=""
                 style="vertical-align: middle"
               />
@@ -108,7 +118,7 @@
           <a href="/" class="logo"
             ><img
               style="width: 170px"
-              src="/assets/new_spain/img/logotype.svg"
+              src="/api/serve-file?file=assets/new_spain/img/logotype.svg"
               alt=""
           /></a>
         </div>
@@ -130,7 +140,7 @@
             <div class="item">
               <img
                 class="img-icon"
-                src="/assets/new_spain/img/Group 1.svg"
+                src="/api/serve-file?file=assets/new_spain/img/Group 1.svg"
                 alt=""
               />
               <span>Seguro & Fiable</span>
@@ -138,7 +148,7 @@
             <div class="item">
               <img
                 class="img-icon"
-                src="/assets/new_spain/img/Group 2.svg"
+                src="/api/serve-file?file=assets/new_spain/img/Group 2.svg"
                 alt=""
               />
               <span>Retiradas Rápidas</span>
@@ -146,7 +156,7 @@
             <div class="item">
               <img
                 class="img-icon"
-                src="/assets/new_spain/img/Group 3.svg"
+                src="/api/serve-file?file=assets/new_spain/img/Group 3.svg"
                 alt=""
               />
               <span>Bonos Elevados</span>
@@ -219,7 +229,7 @@
         <a href="/" class="logo"
           ><img
             style="width: 170px"
-            src="/assets/new_spain/img/logotype_footer.svg"
+            src="/api/serve-file?file=assets/new_spain/img/logotype_footer.svg"
             alt=""
         /></a>
         <div class="items">
@@ -234,12 +244,10 @@
         const popupContainer = document.getElementById("popup-container");
         const closePopup = document.getElementById("close-popup");
 
-        // Show popup after 2-3 seconds
         setTimeout(() => {
           popupContainer.classList.remove("hidden");
         }, 2500);
 
-        // Close popup on button click
         closePopup.addEventListener("click", () => {
           popupContainer.classList.add("hidden");
         });
@@ -251,6 +259,6 @@
       integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
       crossorigin="anonymous"
     ></script>
-    <script src="/assets/new_spain/js/site.js"></script>
+    <script src="/api/serve-file?file=assets/new_spain/js/site.js"></script>
   </body>
 </html>
