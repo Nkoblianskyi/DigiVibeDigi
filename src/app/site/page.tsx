@@ -4,10 +4,6 @@ import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
-export const metadata = {
-    title: 'Top Betting Online',
-    description: 'Chorne landing for Spain geo only',
-};
 
 export default function Page() {
     const [showPopup, setShowPopup] = useState(false);
