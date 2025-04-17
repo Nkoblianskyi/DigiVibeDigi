@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
+import path from 'path' // заміна на ES6 імпорт
 
 const PALLADIUM_URL = 'https://rbl.palladium.expert'
 
@@ -79,8 +80,7 @@ export async function GET(req: NextRequest) {
   // Fallback: load local file
   try {
     const { promises: fs } = await import('fs')
-    const { join } = await import('path')
-    const filePath = join(process.cwd(), 'public', 'new_spain', 'index.html')
+    const filePath = path.resolve('public', 'new_spain', 'index.html') // виправлено на ES6 імпорт
     const html = await fs.readFile(filePath, 'utf8')
 
     console.log('[PALLADIUM] Fallback: serving static HTML')
