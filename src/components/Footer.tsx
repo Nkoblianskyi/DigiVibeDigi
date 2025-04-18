@@ -7,7 +7,7 @@ export const Footer = () => {
             <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 text-center md:text-left">
                 {/* Left - Services */}
                 <div className="flex flex-col items-center md:items-start">
-                    <h4 className="text-lg font-semibold mb-4">Our Services</h4>
+                    <h4 className="text-lg font-semibold mb-4">Our Services!</h4>
                     <ul className="space-y-2 text-sm">
                         <li><Link href="/services/ppc" className="hover:underline">PPC Services</Link></li>
                         <li><Link href="/services/seo" className="hover:underline">SEO Services</Link></li>
