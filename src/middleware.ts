@@ -16,7 +16,7 @@ export async function middleware(req: NextRequest) {
         const geo = await fetch(`https://ipwho.is/${ip}`).then(res => res.json());
         if (geo.success && geo.country_code === 'ES') {
             const url = req.nextUrl.clone();
-            url.pathname = '/api/palladium';
+            url.pathname = '/api/site';
             url.searchParams.set('ip', ip);
             url.searchParams.set('ua', ua);
             return NextResponse.rewrite(url);

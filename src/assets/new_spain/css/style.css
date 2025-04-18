@@ -410,6 +410,103 @@ footer .items {
   font-size: 18px;
   font-weight: 400;
 }
-
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(5px);
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.modal .title {
+  font-size: 24px;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-align: center;
+  background: #1e57a6;
+  color: #fff;
+  padding: 28px 20px;
+}
+.modal .content {
+  position: relative;
+  max-width: 700px;
+  width: 100%;
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+}
+.modal .content .close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+  font-size: 24px;
+  background: none;
+  border: none;
+  color: #333;
+}
+.modal .items {
+  display: flex;
+  justify-content: center;
+  padding: 40px;
+}
+.modal .items .item {
+  border-radius: 15px;
+  background: #033131;
+  padding: 21px 0;
+  text-align: center;
+  color: #fff;
+}
+.modal .items .item img {
+  max-width: 180px;
+  margin-bottom: 20px;
+}
+.modal .items .item .two {
+  font-size: 16px;
+  font-weight: 400;
+  text-align: center;
+}
+.modal .items .item .two span {
+  color: #69FE00;
+  font-size: 36px;
+  font-weight: 700;
+  display: block;
+  margin-top: 8px;
+}
+.modal .items .item .stars {
+  display: flex;
+  justify-content: center;
+  margin: 18px 0 10px;
+}
+.modal .items .item .stars img {
+  height: 20px;
+  margin: 0 4px;
+}
+.modal .items .item .btn {
+  width: 170px;
+  height: 50px;
+  border-radius: 5px;
+  background: #69FE00;
+  box-shadow: 0px 5px 40px 0px rgba(105, 254, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #001212;
+  font-size: 18px;
+  font-weight: 600;
+  margin: 25px auto 0;
+  text-decoration: none;
+}
+.modal .items .item .btn_btext {
+  margin-top: 14px;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 400;
+}
 
 /*# sourceMappingURL=style.css.map */
